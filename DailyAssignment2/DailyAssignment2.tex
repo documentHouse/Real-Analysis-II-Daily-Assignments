@@ -1,0 +1,166 @@
+%\documentclass[11pt,reqno]{amsart}
+\documentclass[11pt,reqno]{article}
+\usepackage[margin=.8in, paperwidth=8.5in, paperheight=11in]{geometry}
+%\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent7
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{caption}
+\pagestyle{plain}
+%\renewcommand{\topfraction}{0.3}
+%\renewcommand{\bottomfraction}{0.8}
+%\renewcommand{\textfraction}{0.07}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 2}
+\author{Andrew Rickert}
+\date{Started: February 23, 2012 \\ \hspace{1pt} Ended: February 24,  2012}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+
+% Page 1
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 4 Problem 1\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+\noindent Let $\mathbb{R}_+$ be the positive reals.\\
+(a) Show that the continuous function $f : \mathbb{R}_+ \to \mathbb{R}$ given by $f(x) = \frac{1}{1+x}$ is bounded but has neither a maximum value nor a minimum value.\\
+
+\noindent Since $0 < x$ we have 
+\[0 < 1 < 1 + x \implies 0 < \frac{1}{1+x}\] 
+so $f(x)$ is bounded below by 0. \\
+
+If $0 < \epsilon < 1$ then for $x' = \frac{1-\epsilon}{\epsilon}$ we have $f(x') = \epsilon$. This shows that for every $\epsilon > 0$ there is a $x'$ such that $f(x') = \epsilon$. This implies that 0 is the greatest lower bound. Since there is no value in $\mathbb{R}_+$ where $f(x) = 0$ the function has no minimum.
+
+Similarly from the fact that $0 < x$ we get 
+\[1 < 1 + x \implies \frac{1}{1+x} < 1\] 
+By the previous calculation there exists a $x'$ such that $f(x') = \epsilon$ if $\epsilon < 1$, this implies that 1 is the least upper bound. Since
+\[ f(x) = 1 \implies \frac{1}{1+x} = 1 \implies x = 0 \]
+but $x = 0 \notin \mathbb{R}_+$ so the function does not have a maximum either.\\
+
+\noindent (b) Show that the continuous function $g : \mathbb{R}_+ \to \mathbb{R}$ given by $g(x) = \sin (\frac{1}{x})$ is bounded but does not satisfy the condition of uniform continuity on $\mathbb{R}_+$.\\
+
+\noindent Since $-1 \le \sin x \le 1$ for all $x$ it follows that $-1 \le \sin (\frac{1}{x}) \le 1$ so $\sin(\frac{1}{x})$ is bounded.\\
+To show that the function is not uniformly continuous we need to show that for every $\delta$ there exists $x,x'$ such that $|x - x'| < \delta$ where $|\sin(\frac{1}{x}) - \sin(\frac{1}{x'})| \ge \epsilon$ for some $\epsilon$. We will pick $\epsilon = \frac{1}{2}$ and proceed to find $x,x'$ satisfying the stated condition. We note the following 
+\begin{eqnarray*}
+\sin u = 0 &\text{when} & u = 2 \pi n \; \text{where $n \in \mathbb{N}$} \\
+\sin u' = \pm 1 &\text{when}& u' = \frac{2 n' + 1}{2} \pi \; \text{where $n' \in \mathbb{N}$} \\
+\end{eqnarray*}
+Because $u = \frac{1}{x}$ and $u' = \frac{1}{x'}$ we get the following relations
+\begin{eqnarray*}
+x &=& \frac{1}{2 \pi n} \\
+x' &=& \frac{2}{2n'+1} \pi \\
+\end{eqnarray*}
+We may now calculate as follows
+\begin{eqnarray*}
+x - x' = \frac{1}{2 \pi n} - \frac{2}{(2 n' + 1) \pi} &=& \frac{2n' \pi + \pi - 4 \pi n}{2\pi n (n' + 1)} \\
+								     &=& \frac{1 +  2n' - 4n}{2 n (n' + 1)} \quad \text{now let $n' = 2n$}\\
+								     &=& \frac{1}{2n(2n+1)} \\
+\end{eqnarray*}
+
+Because this last expression goes to 0 as $n \to \infty$ there exists an $N$ such that for $n > N$ we have $|x - x'| = \frac{1}{2n(2n+1)} < \delta$. If we let $n = N+1$ then $n' = 2n = 2(N+1)$ we now have values for both $x$ and $x'$.\\
+We have shown that for any $\delta$ there exists values $x$ and $x'$ such that $|x - x'| < \delta$ we have 
+\[ |\sin (\frac{1}{x}) - \sin(\frac{1}{x'})| = |0 \pm 1| = 1 \ge \frac{1}{2} \quad \text{our chosen $\epsilon$}\]
+Which shows the function can not be uniformly continuous.
+
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 4 Problem 2\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+Let $X$ deonte the subset $(-1,1) \times 0$ of $\mathbb{R}^2$, and let $U$ be the open ball $B(0;1)$ in $\mathbb{R}^2$, which contains $X$. Show there is no $\epsilon > 0$ such that the $\epsilon$-neighborhood of $X$ in $\mathbb{R}^n$ is contained in $U$. \\
+
+To show that there is no $\epsilon$-neighborhood of $X$ contained in $B(0;1)$ we need to find point $\textbf{a} \in X$ for every $\epsilon$ such that $B(\textbf{a},\epsilon) \not\subset B(0;1)$.\\
+For any $\epsilon$ we chose $\textbf{a}_\epsilon = (1-\frac{\epsilon}{2},0)$. Since $1 - \frac{\epsilon}{2} < 1$ the point $\textbf{a}_\epsilon \in X$. However, the $\epsilon-$neighborhood of $X$ contains $B(\textbf{a}_\epsilon,\epsilon)$ which is the set of all $\textbf{x}$ such that $||\textbf{x}-\textbf{a}_\epsilon|| < \epsilon$. We note then for $\textbf{x} = (1+\frac{\epsilon}{4},0)$ we have $||((1+\frac{\epsilon}{4},0) - (1-\frac{\epsilon}{2},0)|| = ||(\frac{3 \pi}{4},0)|| = \frac{3 \epsilon}{4} < \epsilon$ so $ (1+\frac{\epsilon}{4},0) \in B(\textbf{a}_\epsilon,\epsilon)$.\\
+\indent By definition we have $B(0;1)$ as all $\textbf{x} \in \mathbb{R}^2$ such that $||\textbf{x}|| < 1$. Because $(1+\frac{\epsilon}{4},0) \in B(\textbf{a}_\epsilon,\epsilon)$ and $||1+\frac{\epsilon}{4},0)|| > 1$ we have $(1+\frac{\epsilon}{4},0) \notin B(0;1)$. This is true for all $\epsilon$-neighborhoods so there is no $\epsilon$-neighborhood contained in $B(0;1)$.
+
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 4 Problem 3\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+Let $\mathbb{R}^\infty$ be the set of all "infinity-tuples" $\textbf{x} = (x_1,x_2,\cdots)$ of real numbers that end in an infinite string of 0's. Define the inner product on $\mathbb{R}^\infty$ by the rule $\langle \textbf{x},\textbf{y} \rangle = \sum x_i y_i$.  Let $||\textbf{x} - \textbf{y}||$ be the corresponding metric on $\mathbb{R}^\infty$. Define
+\[ \textbf{e}_i = (0,\cdots,0,1,0,\cdots,0,\cdots) \]
+where 1 appears in the $i^{\text{th}}$ place. Then the $\textbf{e}_i$ form a basis for $\mathbb{R}^\infty$. Let $X$ be the set of all the points $\textbf{e}_i$. Show that $X$ is closed, bounded, and non-compact.\\
+
+The set $X$ is bounded by 1 since for all $\textbf{e}_i$ we have $||\textbf{e}_i|| = \sqrt{\sum x_i y_i} = \sqrt{1} = 1$. To show that $X$ is closed we need to show that the complement is open. This amounts to showing that for any $\textbf{x} \in \mathbb{R}^\infty$ we can find a $\epsilon$ such that $\textbf{e}_i \notin B(\textbf{x},\epsilon)$. \\
+Suppose we are given $\textbf{x} \in \mathbb{R}^\infty$. Because $\textbf{x}$ has a finite number of nonzero components we can take $\epsilon = \text{Min} \{ |1-x_1|,|1-x_2|, \cdots, |1 - x_n|,1\}$. Now we have 
+\[ ||\textbf{e}_i - \textbf{x}|| = \sqrt{(1-x_i)^2} = |1 - x_i| \ge \epsilon \]
+
+Since the open ball is such that $||\textbf{x}- \textbf{a}|| < \epsilon$ by the above calculation we have $\textbf{e}_i \notin B(\textbf{x},\epsilon)$ so the set $X$ is closed.\\
+\indent To show that $X$ is not-compact we pick for the open sets $B(\textbf{e}_i,1)$. Clearly $\textbf{e}_i \in B(\textbf{e}_i,1)$, however $\textbf{e}_j \notin B(\textbf{e}_i,1)$ for $j \neq i$ because $|| \textbf{e}_j - \textbf{e}_i || = \sqrt{1^2  + (-1)^2} = \sqrt{2}$. So each open set $B(\textbf{e}_i,1)$ covers one and only one $\textbf{e}_i$ so the total of all the open sets is an open cover of $X$. A finite subset of these open sets will leave out one of the  $\textbf{e}_i$ which shows that there can be no finite subcover of $X$ for this open cover showing that $X$ is not compact.
+
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 4 Problem 4\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+\noindent (a) Show that open balls and open cubes in $\mathbb{R}^n$ are convex.\\
+
+We assume that $\textbf{a},\textbf{b} \in B(y,\delta)$ where is $B(y,\delta)$ is an open ball of radius $\delta$ around the point $y$. By definition $B(y,\delta)$ is the set of all $z$ such that $|| \textbf{z} - \textbf{y}|| < \delta$. Because $\textbf{a},\textbf{b} \in B(y,\delta)$ we have 
+\begin{eqnarray*}
+|| \textbf{a} - \textbf{y} || &<& \delta \\
+|| \textbf{b} - \textbf{y} || &<& \delta \\
+\end{eqnarray*}
+Our goal is to show that $\textbf{x} = \textbf{a} + t(\textbf{b} - \textbf{a})$ is such that $|| \textbf{x} - \textbf{y} || < \delta$. The following calculation shows this is the case:
+\begin{eqnarray*}
+|| \textbf{x} - \textbf{y} || &=& || \textbf{a} + t(\textbf{b} - \textbf{a}) - \textbf{y} || \\ 
+				    &=& || (1-t)\textbf{a} + t\textbf{b} - \textbf{y} || \\
+				    &=& || (1-t)\textbf{a} + t\textbf{b} - ((1 - t)\textbf{y} + t\textbf{y}) || \\ 
+				    &=& || (1-t)(\textbf{a}-\textbf{y}) + t(\textbf{b} - \textbf{y})|| \\ 
+				    &\le& || (1-t)(\textbf{a}-\textbf{y})|| + ||t(\textbf{b} - \textbf{y})||\\
+				    &<& (1-t) \delta + t \delta = \delta
+\end{eqnarray*}
+ 
+\noindent This shows that the ball $B(y,\delta)$ is convex. The proof for the cube is the same argument using the sup metric.\\
+
+\noindent (b) Show that (open and closed) rectangles in $\mathbb{R}^n$ are convex.
+
+The rectangle $Q$ in $\mathbb{R}^n$ is defined as 
+\begin{eqnarray*}
+Q_{open} &=& (a_1,b_1) \times \cdots \times (a_n,b_n) \\
+Q_{closed} &=& [a_1,b_1] \times \cdots \times [a_n,b_n] \\
+\end{eqnarray*}
+
+We will prove that the open rectangle is convex, the proof for the closed rectangle is the same.\\
+Let $\textbf{c},\textbf{d} \in Q_{open}$ this means that 
+\begin{eqnarray*}
+&a_i < c_i < b_i \; \text{for all $1 \le i \le n$} & \\
+&a_i < d_i < b_i \; \text{for all $1 \le i \le n$} & \\
+\end{eqnarray*}
+We want to show that $\textbf{x} = \textbf{c} + t(\textbf{d} - \textbf{c}) \in Q_{open}$ which translates into showing 
+\[ a_i < c_i + t(d_i - c_i) < b_i \; \text{for all $1 \le i \le n$} \]
+
+\noindent To this end we fix an $i$ and let $m = \text{Min}\; (c_i,d_i)$ and $M = \text{Max}\; (c_i,d_i)$. These relations mean that 
+\begin{eqnarray*} 
+m \le c_i &,& m \le d_i \\
+c_i \le M &,& d_i \le M \\
+\end{eqnarray*}
+
+We take the case with the minimum $m$ first. Since $m = c_i$ or $m = d_i$ and it is true from the above relationship that $ a_i < c_i$ and $a_i < d_i$ then we have $a_i < m$.  The following calculation uses $m$ to provide a desired lower bound.
+\begin{eqnarray*} 
+m \le c_i &\implies& (1-t) m \le  (1-t) c_i \\
+m \le d_i &\implies& t m \le  t d_i \\
+\implies m = (1-t) m + t m &\le& (1 - t) c_i + t d_i = c_i + t (d_i - c_i)
+\end{eqnarray*}
+Now since $a_i < m$ and $m \le  c_i + t (d_i - c_i)$ we have \[ a_i < c_i + t (d_i - c_i) \]
+\indent We now show a similar calculation for the maximum $M$. Since $M = c_i$ or $M = d_i$ and it is true from above that $ c_i < b_i$ and $d_i < b_i$ then we have $M < b_i$.  The following calculation uses $M$ to provide a desired upper bound.
+\begin{eqnarray*} 
+c_i \le M &\implies& (1-t) c_i \le  (1-t) M \\
+d_i \le M &\implies& t d_i \le  t M \\
+\implies M = (1-t) M + t M &\ge& (1 - t) c_i + t d_i = c_i + t (d_i - c_i)
+\end{eqnarray*}
+Now since $M < b_i$ and $c_i + t (d_i - c_i) \le M$ we have \[ c_i + t (d_i - c_i) < b_i \].
+
+\noindent We have now shown that $a_i < c_i + t (d_i - c_i)$ and $c_i + t (d_i - c_i) < b_i$. This process can be carried out for each $1 \le i \le n$ and the proof is complete.
+
+\end{document}  
