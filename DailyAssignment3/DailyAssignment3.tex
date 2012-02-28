@@ -20,7 +20,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 3}
 \author{Andrew Rickert}
-\date{Started: February 27, 2012 \\ \hspace{1pt} Ended: February ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: February 27, 2012 \\ \hspace{1pt} Ended: February 28,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -32,7 +32,7 @@
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
-We have the function defined by
+\noindent We have the function defined by
 
 \begin{eqnarray*} 
 f(\textbf{0}) &=& 0 \\
@@ -41,7 +41,7 @@ f(x,y) &=& \frac{x y}{x^2 + y^2} \quad \text{if $(x,y) \neq 0$} \\
 
 \noindent (a) For which vectors $\textbf{u} \neq 0$ does $f'(\textbf{0};\textbf{u})$ exist? Evaluate it when it exists.\\
 
-Let $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$ and substitute into the expression for the directional derivative:
+\noindent Let $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$ and substitute into the expression for the directional derivative:
 \[ \phi(t) = \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{t} = \frac{1}{t} \frac{t^2 h k}{t^2 (h^2 + k^2)} = \frac{h k}{t (h^2 + k^2)} \]
 If both $h \neq 0$ and $k \neq 0$ then the quotient does not have a finite limit. If we have $h = 0$ and $k \neq 0$ or $h \neq 0$ and $k = 0$ then $q(t) = 0$ so $\lim_{t \to 0} q(t) = f'(\textbf{0};\textbf{u}) = 0$.\\
 
@@ -53,10 +53,21 @@ In part $a$ it was shown that the directional derivative exists for $\textbf{u} 
 
 If any of the directional derivatives do not exist then $f$ is not differentiable. Suppose the directional derivative at $\textbf{a}$ in the $\textbf{u}$ direction does not exist. If $f$ were differentiable then we have 
 \[ f'(\textbf{a};\textbf{u}) = Df(\textbf{a}) \cdot \textbf{u} \]
-which implies the existence of the directional derivative at the value and direction it does not exist. This is a contradiction. \\
+which implies the existence of the directional derivative at that value and direction. This is a contradiction. \\ 
 \indent Since the directional derivative does not exist when $h \neq 0$ and $k \neq 0$ at $\textbf{0}$ it follows that $f$ is not differentiable at $\textbf{0}$. \\
 
-\noindent (d) Is $f$ continuous at $\textbf{0}?$
+\noindent (d) Is $f$ continuous at $\textbf{0}?$\\
+
+\noindent From part $a$ we see that
+\[ f(\textbf{0} + t \textbf{u}) - f(\textbf{0})  = \frac{h k}{h^2 + k^2} \]
+
+This says that the difference $f(\textbf{0} + t \textbf{u}) - f(\textbf{0})$ is constant for all values of $t$. This means that for any $\delta$ we choose $|t| < \frac{\delta}{|h|}$ so that $|t h| < \delta$. Now we let $k = h$ which gives $|t \textbf{u}| = \left| \left[ \begin{array}{c} th\\ th\\ \end{array} \right] \right| = |t h| < \delta$ however
+\[  f(\textbf{0} + t \textbf{u}) - f(\textbf{0})  = \frac{h h}{h^2 + h^2} = \frac{1}{2} \]
+
+\noindent This shows that for every $\delta$ we can find a $t$ and $\textbf{u}$ such that $|t \textbf{u}| < \delta$ but that 
+\[  f(\textbf{0} + t \textbf{u}) - f(\textbf{0}) \ge \frac{1}{2} \]
+
+\noindent So, $f$ is not continuous at $\textbf{0}$.
 
 \vspace{15pt}
 \begin{flushleft} 
@@ -64,7 +75,44 @@ which implies the existence of the directional derivative at the value and direc
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent We have the function defined by
 
+\begin{eqnarray*} 
+f(\textbf{0}) &=& 0 \\
+f(x,y) &=& \frac{x^2 y^2}{x^2 y^2 + (y - x)^2} \quad \text{if $(x,y) \neq 0$} \\
+\end{eqnarray*}
+
+\noindent (a) For which vectors $\textbf{u} \neq 0$ does $f'(\textbf{0};\textbf{u})$ exist? Evaluate it when it exists.\\
+
+\noindent Let $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$ and substitute into the expression for the directional derivative:
+\[ \phi(t) = \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{t} = \frac{1}{t} \frac{t^4 h^2 k^2}{t^2 (t^2 h^2 k^2 + (k - h)^2)} = \frac{t h^2 k^2}{t^2 h^2 k^2 + (k - h)^2} \]
+
+Since $\lim_{t \to 0} t h^2 k^2 = 0$ and $\lim_{t \to 0} t^2 h^2 k^2 + (k - h)^2 = (k - h)^2$ we have 
+\[ f'(\textbf{0};\textbf{u}) = \lim_{t \to 0} \phi(t) =  \frac{\lim_{t \to 0} t h^2 k^2}{\lim_{t \to 0} t^2 h^2 k^2 + (k - h)^2} = \frac{0}{(h-k)^2}= 0 \quad \text{For all $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$}\]
+
+
+\noindent (b) Do $D_1 f$ and $D_2 f$ exist at $\textbf{0}$?\\
+
+Since $D_1 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_1)$ and $D_2 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_2)$ and part $a$ shows that $f'(\textbf{0};\textbf{u})$ exists for all $\textbf{u}$, the partial derivatives exist.\\
+
+\noindent (c) Is $f$ differentiable at $\textbf{0}?$\\
+
+Theorem 5.4 in munkres says that $f(\textbf{x})$ is differentiable if it's component functions $f_i(\textbf{x})$ are differentiable. There is only one component in $f(\textbf{x})$ so to evaluate the differentiability of $f$ we only need to show the differentiability of this one component. So
+
+\begin{eqnarray*}
+\lim_{\textbf{h} \to \textbf{0}} F_1(\textbf{h}) &=&  \lim_{\textbf{h} \to \textbf{0}} \frac{f(\textbf{0} + \textbf{h}) - f(\textbf{0}) - B \cdot \textbf{h}}{|\textbf{h}|} \\
+&=&  \lim_{\textbf{h} \to \textbf{0}} \frac{f(\textbf{0} + \textbf{h}) - f(\textbf{0}) - 0 \cdot \textbf{h}}{|\textbf{h}|} \quad \text{let $\text{B}$ = 0}\\
+&=&  \lim_{t \to 0} \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{|t \textbf{u}|} \quad \text{let $\textbf{h} = t \textbf{u}$}\\
+&=& \frac{1}{|\textbf{u}|} \lim_{t \to 0} \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{|t|}\\
+&=& \frac{1}{|\textbf{u}|} \cdot 0 \quad \text{from part $a$}\\
+&=& 0
+\end{eqnarray*}
+
+So $f$ must be differentiable.\\
+
+\noindent (d) Is $f$ continuous at $\textbf{0}?$\\
+
+Since $f$ is differentiable at $\textbf{0}$, $f$ is continuous at this value by theorem 5.2
 
 \vspace{15pt}
 \begin{flushleft} 
@@ -72,7 +120,44 @@ which implies the existence of the directional derivative at the value and direc
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+
+\noindent We have the function defined by
+
+\begin{eqnarray*} 
+f(\textbf{0}) &=& 0 \\
+f(x,y) &=& \frac{x^3}{x^2 + y^2} \quad \text{if $(x,y) \neq 0$} \\
+\end{eqnarray*}
+
+
+ \noindent (a) For which vectors $\textbf{u} \neq 0$ does $f'(\textbf{0};\textbf{u})$ exist? Evaluate it when it exists.\\
+
+\noindent Let $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$ and substitute into the expression for the directional derivative:
+\[ \phi(t) = \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{t} = \frac{1}{t} \frac{t^3 h^3}{t^2 (h^2 + k^2)} = \frac{h^3}{h^2 + k^2} \]
+
+This shows that $f'(\textbf{0}; \textbf{u}) = \lim_{t \to 0} \phi(t) = \frac{h^3}{h^2 + k^2}$ and since this value is defined for all $h,k$ except $h = k = 0$ this shows that the directional derivative exists for all $\textbf{u} \neq \textbf{0}$.\\
+
+\noindent (b) Do $D_1 f$ and $D_2 f$ exist at $\textbf{0}$?\\
+
+Since $D_1 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_1)$ and $D_2 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_2)$ and part $a$ shows that all the directional derivatives exist we know that the partial derivatives exist.\\
+
+\noindent (c) Is $f$ differentiable at $\textbf{0}?$\\
+
+If $f$ were differentiable then by theorem 5.1 the directional derivative $f(\textbf{0},\textbf{u})$ would be linear since
+\[ f'(\textbf{0}; \textbf{u}) = D f(0) \cdot \textbf{u}\]
+
+This is not the case since by part $a$ we have $f'(\textbf{0}; \textbf{e}_1) = 1$ and $f'(\textbf{0}; \textbf{e}_2) = 0$ but $f'(\textbf{0}; \textbf{e}_1 + \textbf{e}_2) = \frac{1}{2}$. So $f$ is not differentiable.\\
+
+\noindent (d) Is $f$ continuous at $\textbf{0}?$\\
  
+\noindent The following calculation shows the continuity of $f$ at $\textbf{0}$:
+ \begin{eqnarray*}
+\lim_{\textbf{h} \to \textbf{0}} f(\textbf{0} + \textbf{h}) - f(\textbf{0}) &=& \lim_{t \to 0} f(\textbf{0} + t \textbf{u}) - f(\textbf{0})\\
+&=& \lim_{t \to 0} f(t \textbf{u})\\
+&=& \lim_{t \to 0} \frac{t^3 h^3}{t^2 (h^2 + k^2)} \\
+&=& \lim_{t \to 0} \frac{t h^3}{h^2 + k^2} \\
+&=& 0
+\end{eqnarray*}
+
  
 \vspace{15pt}
 \begin{flushleft} 
@@ -80,7 +165,39 @@ which implies the existence of the directional derivative at the value and direc
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent We have the function defined by
 
+\begin{eqnarray*} 
+f(x,y) &=& |x| + |y| \\
+\end{eqnarray*}
+
+\noindent (a) For which vectors $\textbf{u} \neq 0$ does $f'(\textbf{0};\textbf{u})$ exist? Evaluate it when it exists.\\
+
+\noindent Let $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$ and substitute into the expression for the directional derivative:
+\[ \phi(t) = \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{t} = \frac{1}{t} (|t h| + |t k|) =  \frac{|t|}{t} (|h| + |k|) \]
+
+This directional derivative does not exist for any $\textbf{u}$ since $\phi(t) = -(|h| + |k|)$ for all $t < 0$ and $\phi(t) = |h| + |k|$ for $t > 0$.\\
+
+\noindent (b) Do $D_1 f$ and $D_2 f$ exist at $\textbf{0}$?\\
+
+Since $D_1 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_1)$ and $D_2 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_2)$ and part $a$ shows that none of the directional derivatives exist we know that neither of the partial derivatives exist.\\
+
+\noindent (c) Is $f$ differentiable at $\textbf{0}?$\\
+
+By theorem 5.1 we have
+\[ f'(\textbf{a};\textbf{u}) = Df(\textbf{a}) \cdot \textbf{u} \]
+If $f$ were differentiable then the directional derivatives would exist. Since they do not $f$ is not differentiable.\\
+
+\noindent (d) Is $f$ continuous at $\textbf{0}?$\\
+
+\noindent  The following calculation shows the continuity of $f$ at $\textbf{0}$:
+\begin{eqnarray*}
+\lim_{\textbf{h} \to \textbf{0}} f(\textbf{0} + \textbf{h}) - f(\textbf{0}) &=& \lim_{t \to 0} f(\textbf{0} + t \textbf{u}) - f(\textbf{0})\\
+&=& \lim_{t \to 0} f(t \textbf{u})\\
+&=& \lim_{t \to 0} |t h| + |t k| \\
+&=& \lim_{t \to 0} |t| (|h| + |k|) \\
+&=& 0
+\end{eqnarray*}
 
 \vspace{15pt}
 \begin{flushleft} 
@@ -88,6 +205,41 @@ which implies the existence of the directional derivative at the value and direc
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent We have the function defined by
+
+\begin{eqnarray*} 
+f(\textbf{0}) &=& 0 \\
+f(x,y) &=& \frac{x |y|}{(x^2 + y^2)^\frac{1}{2}} \quad \text{if $(x,y) \neq 0$} \\
+\end{eqnarray*}
+
+\noindent (a) For which vectors $\textbf{u} \neq 0$ does $f'(\textbf{0};\textbf{u})$ exist? Evaluate it when it exists.\\
+
+\noindent Let $\textbf{u} = \left[ \begin{array}{c} h\\ k\\ \end{array} \right]$ and substitute into the expression for the directional derivative:
+\[ \phi(t) = \frac{f(\textbf{0} + t \textbf{u}) - f(\textbf{0})}{t} = \frac{1}{t} \frac{t h |t k|}{(t^2 h^2 + t^2 k^2)^\frac{1}{2}} =  \frac{1}{t} \frac{t |t| \cdot h |k|}{|t| (h^2 + k^2)^\frac{1}{2}} = \frac{h |k|}{(h^2 + k^2)^\frac{1}{2}} \]
+
+This shows that $f'(\textbf{0}; \textbf{u}) = \lim_{t \to 0} \phi(t) = \frac{h |k|}{(h^2 + k^2)^\frac{1}{2}}$ and since this value is defined for all $h,k$ except $h = k = 0$ this shows that the directional derivative exists for all $\textbf{u} \neq \textbf{0}$.\\
+
+\noindent (b) Do $D_1 f$ and $D_2 f$ exist at $\textbf{0}$?\\
+
+Since $D_1 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_1)$ and $D_2 f(\textbf{0}) = f'(\textbf{0}; \textbf{e}_2)$ and part $a$ shows that all the directional derivatives exist we know that the partial derivatives exist.\\
+
+\noindent (c) Is $f$ differentiable at $\textbf{0}?$\\
+
+If $f$ were differentiable then by theorem 5.1 the directional derivative $f(\textbf{0},\textbf{u})$ would be linear since
+\[ f'(\textbf{0}; \textbf{u}) = D f(0) \cdot \textbf{u}\]
+
+This is not the case since by part $a$ we have $f'(\textbf{0}; \textbf{e}_1) = 0$ and $f'(\textbf{0}; \textbf{e}_2) = 0$ but $f'(\textbf{0}; \textbf{e}_1 + \textbf{e}_2) = \frac{1}{\sqrt{2}}$. So $f$ is not differentiable.\\
+
+\noindent (d) Is $f$ continuous at $\textbf{0}?$\\
+
+\noindent  The following calculation shows the continuity of $f$ at $\textbf{0}$:
+\begin{eqnarray*}
+\lim_{\textbf{h} \to \textbf{0}} f(\textbf{0} + \textbf{h}) - f(\textbf{0}) &=& \lim_{t \to 0} f(\textbf{0} + t \textbf{u}) - f(\textbf{0})\\
+&=& \lim_{t \to 0} f(t \textbf{u})\\
+&=& \lim_{t \to 0} \frac{t |t| \cdot h |k|}{|t| (h^2 + k^2)^\frac{1}{2}}\\
+&=& \lim_{t \to 0} \frac{t \cdot h |k|}{(h^2 + k^2)^\frac{1}{2}} \\
+&=& 0
+\end{eqnarray*}
 
 
 \end{document}
