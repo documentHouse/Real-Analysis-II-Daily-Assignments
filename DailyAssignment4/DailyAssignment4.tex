@@ -31,13 +31,72 @@
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Define $f: \mathbb{R} \to \mathbb{R}$ by setting $f(0) = 0$ and
+\[ f(t) = t^2 \sin(1/t) \quad \text{if} \quad t \neq 0 \]
 
+\noindent (a) Show $f$ is differentiable at $0$, and calculate $f'(0)$\\
+
+We show that the derivative exists by calculating it at $t = 0$. By the definition of the derivative
+\begin{eqnarray*}
+\lim_{\textbf{h} \to \textbf{0}} \frac{f(\textbf{0} + \textbf{h}) - f(\textbf{0}) - \textbf{B}\cdot \textbf{h}}{|\textbf{h}|} &=&  \lim_{t \to 0} \frac{f(0 + t) - f(0) - B \cdot t}{|t|} \quad \text{implies right and left hand derivative exist}\\
+&=& \lim_{t \to 0} \frac{f(t)}{|t|} \quad \text{we are showing $B$ = 0 to be the derivative}\\
+&=& \lim_{t \to 0} \frac{t^2}{|t|} \sin(\frac{1}{t})\\
+\end{eqnarray*}
+
+\noindent Since it is the case that $-1 \le \sin(\frac{1}{t}) \le 1$ we have the following
+\begin{eqnarray*}
+-|t| \le \frac{t^2}{|t|} \sin(\frac{1}{t}) \le |t| &\implies& \lim_{t \to 0} -|t| \le \lim_{t \to 0} \frac{t^2}{|t|} \sin(\frac{1}{t}) \le \lim_{t \to 0} |t| \\
+& \implies & 0 \le \lim_{t \to 0} \frac{t^2}{|t|} \sin(\frac{1}{t}) \le 0 \\
+& \implies & \lim_{t \to 0} \frac{t^2}{|t|} \sin(\frac{1}{t}) = 0
+\end{eqnarray*}
+
+\noindent This shows that $f$ is differentiable at 0 and that $f'(0) = 0$.\\
+
+\noindent (b) Calculate $f'(t)$ if $t \neq 0$.\\
+
+Since $\frac{1}{t}$ is differentiable at $t \neq 0$ and $t^2, \sin t$ are differentiable everywhere we can conclude by they chain rule that $t^2 \sin (\frac{1}{t} )$ is differentiable everywhere except $t = 0$. The chain rule gives the formula
+\[ f'(t) = 2t \sin( \frac{1}{t} ) - \cos(\frac{1}{t}) \quad \text{for $t \neq 0$}\]
+
+\noindent (c) Show $f'$ is not continuous at 0.\\
+
+$f'(t)$ is continuous at 0 if and only if $\lim_{t \to 0} f'(t) = f'(0)$. The first term in is bounded as 
+\[ -2|t| \le 2t \sin( \frac{1}{t} ) \le 2|t| \]
+so the $\lim_{t \to 0} 2t \sin( \frac{1}{t} ) = 0$. However the limit $\lim_{t \to 0} \cos (\frac{1}{t})$ clearly does not exist since 
+\[ \lim_{n \to \infty} t(n) = \frac{1}{2 \pi n} = 0 \quad \text{but} \quad \cos(\frac{1}{t(n)}) = \cos 2 \pi n = 1 \]
+
+\noindent this shows that $f'$ can not be continuous as 0.\\
+
+\noindent (d) Conclude that $f$ is differentiable on $\mathbb{R}$ but not of class $C^1$ on $\mathbb{R}$.\\
+
+In part $a$ it was shown that $f$ is differentiable at $t = 0$ and in part $b$ it was shown that $f$ is differentiable for all other values so $f$ is differentiable on $\mathbb{R}$. Since part $c$ showed that $f'$ is not continuous at $t = 0$ we know that $f$ is not continuously differentiable on any interval that contains $t = 0$. This says that for $t \in \mathbb{R}$ that $f \notin C^1$.
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 6 Problem 5\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $f: \mathbb{R}^2 \to \mathbb{R}^2$ be defined by the equation
+\[ f(r,\theta) = (r \cos \theta, r \sin \theta) \]
+
+\noindent (a) Calculate $D f$ and det $D f$.
+
+\noindent If we let $f_1(r,\theta) = r \cos \theta$ and $f_2(r,\theta) = r \sin \theta$ then jacobian matrix is of the form
+\[ 
+\left( \begin{array}{cc}
+D_1 f_1 & D_2 f_1 \\
+D_1 f_2 & D_2 f_2  \\
+\end{array} \right)
+\implies 
+\left( \begin{array}{cc}
+\cos \theta & -r \sin \theta \\
+\sin \theta & r \cos \theta  \\
+\end{array} \right)
+\]
+
+\noindent Taking determinant
+\[ \text{det} \; D f = \cos \theta \cdot r \cos \theta - ( - r \sin \theta \cdot \sin \theta ) = r ( \cos^2 \theta + \sin^2 \theta) = r \]
+
+\noindent (b) Sketch the image under $f$ of the set $S = [1,2] \times [0,\pi]$. \\ 
 
 
 \begin{flushleft} 
@@ -45,7 +104,34 @@
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $g: \mathbb{R} \to \mathbb{R}$ be a function of class $C^2$. Show that 
+\[ \lim_{h \to 0} \frac{g(a + h) - 2 g(a) + g(a - h)}{h^2}  = g''(a)\]
 
+\noindent Let $f(x) = g(x) - g(x - h)$. We may now recast the problem:
+\[ \phi(h) = \frac{g(a + h) - 2 g(a) + g(a - h)}{h^2} = \frac{f(a+h) - f(a)}{h^2} \]
+
+\noindent Since $g \in C^2$ we can apply the mean value theorem to the above expression and get
+\[ \frac{f(a+h) - f(a)}{h^2} = \frac{f'(h_0) h}{h^2} = \frac{f'(h_0)}{h} \quad \text{for $a < h_0 < a + h$} \]
+
+This expression can be rewritten as $f'(h_0) = g'(h_0) - g'(h_0 - h)$. Because $g' \in C^1$ we may apply the mean value theorem again to the above expression to get 
+\[  \frac{f'(h_0)}{h} =  \frac{g'(h_0) - g'(h_0 - h)}{h} = \frac{g''(h_1) h}{h} = g''(h_1) \quad \text{for $h_0 - h < h_1 < h_0$ } \]
+
+To finish we need to evaluate $\lim_{h \to 0} g''(h_1)$. Since we have
+\begin{eqnarray*}
+& & a < h_0 < a + h \quad \text{and} \quad h_0 - h < h_1 < h_0 \\
+& \implies & a + h < h_0 + h < a + 2 h \quad \text{and} \quad h_0 < h_1 + h < h_0 + h \\
+& \implies & a < h_1 + h < a + 2 h \\
+& \implies & a - h < h_1 < a + h 
+\end{eqnarray*}
+The final expression is true for all $h$ so we have
+\begin{eqnarray*}
+\lim_{h \to 0} a - h & < & \lim_{h \to 0} h_1 < \lim_{h \to 0} a + h \implies a \le \lim_{h \to 0} h_1 \le  a\\
+\implies \lim_{h \to 0} h_1 = a
+\end{eqnarray*}
+
+\noindent Because $g''$ is continuous we may carry out the limit to prove the theorem
+
+\[ \lim_{h \to 0} \phi(t) = \lim_{h \to 0} g''(h_1) = g''(a) \]
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 6 Problem 10\\
