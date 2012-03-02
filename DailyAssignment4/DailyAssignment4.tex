@@ -20,7 +20,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 4}
 \author{Andrew Rickert}
-\date{Started: February ??, 2012 \\ \hspace{1pt} Ended: Month ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 1, 2012 \\ \hspace{1pt} Ended: Month ??,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -137,6 +137,33 @@ The final expression is true for all $h$ so we have
 \textbf{Class 18.101} - Section 6 Problem 10\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
+
+\noindent Define $f : \mathbb{R}^2 \to \mathbb{R}$ by setting $f(\textbf{0}) = 0$ and 
+\[ f(x,y) = \frac{xy(x^2 - y^2)}{x^2 + y^2} \quad \text{if} \quad \text{$(x,y) \neq \textbf{0}$} \]
+
+\noindent (a) Show $D_1 f$ and $D_2 f$ exist at $\textbf{0}$.\\
+
+\noindent Start with $D_1 f$ which is defined as the directional derivative in the $\textbf{e}_1$ direction:
+
+\begin{eqnarray*}
+D_1 f &=& f'(\textbf{0};\textbf{e}_1) = \lim_{t \to 0} \frac{f(\textbf{0} + t \textbf{e}_1) - f(\textbf{0})}{t}\\
+&=& \lim_{t \to 0} \frac{f(t \textbf{e}_1)}{t} = \lim_{t \to 0} 0 = 0\\
+\end{eqnarray*}
+Similarly
+\begin{eqnarray*}
+D_2 f &=& f'(\textbf{0};\textbf{e}_1) = \lim_{t \to 0} \frac{f(\textbf{0} + t \textbf{e}_2) - f(\textbf{0})}{t}\\
+&=& \lim_{t \to 0} \frac{f(t \textbf{e}_2)}{t} = \lim_{t \to 0} 0 = 0\\
+\end{eqnarray*}
+
+\noindent (b) Calculate $D_1 f$ and $D_2 f$ at $(x,y) \neq 0$. \\
+
+The differentiability of $f(x,y)$ when $(x,y) \neq 0$ follows from the differentiability of sums, differences, products, quotients, and compositions. This means we can find the partial derivatives using the standard rules of calculus:
+\begin{eqnarray*}
+D_1 f (x,y) = \\
+D_2 f (x,y) = \\
+\end{eqnarray*}
+
+
 
 
 \end{document}
