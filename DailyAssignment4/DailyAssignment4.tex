@@ -20,7 +20,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 4}
 \author{Andrew Rickert}
-\date{Started: March 1, 2012 \\ \hspace{1pt} Ended: Month ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 1, 2012 \\ \hspace{1pt} Ended: March 2,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -157,13 +157,72 @@ D_2 f &=& f'(\textbf{0};\textbf{e}_1) = \lim_{t \to 0} \frac{f(\textbf{0} + t \t
 
 \noindent (b) Calculate $D_1 f$ and $D_2 f$ at $(x,y) \neq 0$. \\
 
-The differentiability of $f(x,y)$ when $(x,y) \neq 0$ follows from the differentiability of sums, differences, products, quotients, and compositions. This means we can find the partial derivatives using the standard rules of calculus:
+The differentiability of $f(x,y)$ when $(x,y) \neq 0$ follows from the differentiability of sums, differences, products, quotients, and compositions of polynomials. This means we can find the partial derivatives using the standard rules of calculus:
 \begin{eqnarray*}
-D_1 f (x,y) = \\
-D_2 f (x,y) = \\
+D_1 f (x,y) = y \left( \frac{x^4 + 4 x^2 y^2 - y^4}{(x^2 + y^2)^2} \right)\\
+D_2 f (x,y) = x \left( \frac{x^4 - 4 x^2 y^2 - y^4}{(x^2 + y^2)^2} \right)\\
+\end{eqnarray*}
+
+\noindent (c) Show $f$ is of class $C^1$ on $\mathbb{R}^2$.\\
+
+By the continuity of sums, differences, products, quotients, and compositions of polynomials the expressions for $D_1 f$ and $D_2 f$ in part $b$ are continuous for $(x^2 + y^2)^2 \neq 0$. This is true for all $x,y$ except $x = y = 0$. Lastly we need to show that $D_1 f$ and $D_2 f$ are continuous at $\textbf{0}$. This amounts to showing that $\lim_{ \textbf{h} \to \textbf{0}} D_1 f(\textbf{h}) = D_1 f(\textbf{0}) = 0$ and  $\lim_{ \textbf{h} \to \textbf{0}} D_2 f(\textbf{h}) = D_2 f(\textbf{0}) = 0$.\\
+\noindent We handle $D_1 f$ first. Let 
+\[ g_1(x,y) =  \frac{x^4 + 4 x^2 y^2 - y^4}{(x^2 + y^2)^2} = \frac{(x^2-y^2)(x^2 + y^2) + 4 x^2 y^2}{(x^2 + y^2)^2} =  \frac{x^2-y^2}{x^2 + y^2}  + \frac{4 x^2 y^2}{(x^2 + y^2)^2} \]
+
+\noindent We can now derive some bounds on $g(x,y)$ that will be useful
+\begin{eqnarray*}
+g_1(x,y) > \frac{-x^2-y^2}{x^2 + y^2}  + \frac{4 x^2 y^2}{(x^2 + y^2)^2} = -1 + \frac{4 x^2 y^2}{(x^2 + y^2)^2} >  -1\\
+\end{eqnarray*}
+\noindent Also
+\begin{eqnarray*}
+g_1(x,y) &<& \frac{x^2 + y^2}{x^2 + y^2}  + \frac{4 x^2 y^2}{(x^2 + y^2)^2} = 1 + \frac{4 x^2 y^2}{(x^2 + y^2)^2}\\
+&=& 1 + \frac{4 x^2 y^2}{x^4 + y^4 + 2 x^2 y^2} < 1 + \frac{4 x^2 y^2}{2 x^2 y^2} = 3 \\
+\end{eqnarray*}
+
+\noindent This gives us the bounds
+\[ -1 < g_1(x,y) < 3 \]
+
+\noindent For $D_2 f$ we may perform similar algebra for $g_2(x,y)$ defined as follows:
+\[ g_2(x,y) =  \frac{x^4 - 4 x^2 y^2 - y^4}{(x^2 + y^2)^2} = \frac{(x^2-y^2)(x^2 + y^2) - 4 x^2 y^2}{(x^2 + y^2)^2} =  \frac{x^2-y^2}{x^2 + y^2}  - \frac{4 x^2 y^2}{(x^2 + y^2)^2} \]
+
+\noindent For the lower bound
+\begin{eqnarray*}
+g_1(x,y) &>& \frac{-x^2 - y^2}{x^2 + y^2}  - \frac{4 x^2 y^2}{(x^2 + y^2)^2} = -1 - \frac{4 x^2 y^2}{(x^2 + y^2)^2}\\
+&=& 1 - \frac{4 x^2 y^2}{x^4 + y^4 + 2 x^2 y^2} > -1 - \frac{4 x^2 y^2}{2 x^2 y^2} = -3 \\
+\end{eqnarray*}
+\noindent As well for the upper bound
+\begin{eqnarray*}
+g_1(x,y) < \frac{x^2+y^2}{x^2 + y^2}  - \frac{4 x^2 y^2}{(x^2 + y^2)^2} = 1 - \frac{4 x^2 y^2}{(x^2 + y^2)^2} < 1\\
+\end{eqnarray*}
+\noindent So the bounds for $g_2(x,y)$ are
+\[ -3 < g_2(x,y) < 1 \] 
+
+This allows us to say that $-3 < g_1(x,y), g_2(x,y) < 3$ for all $(x,y)$. We now show that\\ $\lim_{\textbf{h} \to 0} D_1 f(\textbf{h}) = 0$ with the proof for $D_2 f$ being analogous.\\
+
+\noindent From the definition of $g_1(x,y)$ and it's bounds we have 
+\begin{eqnarray*}
+ & &-3 y < y \;g_2(x,y) = D_1 f(x,y) < 3 y \quad \text{now let $\textbf{h} = (h_1,h_2)$ so that} \\
+ &\implies& 0 = \lim_{\textbf{h} \to 0} - 3 h_2 \le  \lim_{\textbf{h} \to 0} D_1 f(\textbf{h}) \le \lim_{\textbf{h} \to 0}  3 h_2 = 0 \\
+ &\implies&  \lim_{\textbf{h} \to 0} D_1 f(\textbf{h}) = 0
 \end{eqnarray*}
 
 
+\noindent (d) Show that $D_2 D_1 f$ and $D_1 D_2 f$ exist at $\textbf{0}$, but are not equal there.\\
 
+We use the definition of the directional derivative to show the second partials exist. For $D_2 D_1 f(\textbf{0})$ we have
+
+\begin{eqnarray*}
+D_2 D_1 f(\textbf{0}) &=& \lim_{t \to 0} \frac{D_1 f(\textbf{0} + t \textbf{e}_2) - D_1 f(\textbf{0})}{t} =  \lim_{t \to 0} \frac{D_1 f(t \textbf{e}_2)}{t}\\
+			&=& \lim_{t \to 0} \frac{1}{t} (-t) = \lim_{t \to 0} -1  = -1 \\
+\end{eqnarray*}
+
+\noindent For $D_1 D_2 f(\textbf{0})$ we have
+
+\begin{eqnarray*}
+D_1 D_2 f(\textbf{0}) &=& \lim_{t \to 0} \frac{D_2 f(\textbf{0} + t \textbf{e}_1) - D_2 f(\textbf{0})}{t} =  \lim_{t \to 0} \frac{D_2 f(t \textbf{e}_1)}{t}\\
+			&=& \lim_{t \to 0} \frac{1}{t} (t) = \lim_{t \to 0} 1  =  1\\
+\end{eqnarray*}
+
+\noindent So we have $D_1 D_2 f(\textbf{0}) \neq D_2 D_1 f(\textbf{0})$.
 
 \end{document}
