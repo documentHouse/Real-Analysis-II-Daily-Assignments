@@ -20,7 +20,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 5}
 \author{Andrew Rickert}
-\date{Started: March 5, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 5, 2012 \\ \hspace{1pt} Ended: March 5,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -39,20 +39,164 @@
 
 \noindent Let $g : \mathbb{R}^2 \to \mathbb{R}^2$ be defined by the equation
 \[ g(x,y) = (x + 2 y, 3 x y) \]
-\noindent Find $D(g \circ f)(\textbf{0})$.
+\noindent Find $D(g \circ f)(\textbf{0})$.\\
+
+\noindent By the chainrule and the statement of the problem we have 
+\[ D(g \circ f)(\textbf{0})  =  D g(f(\textbf{0})) \cdot D f(\textbf{0}) =  D g(1,2) \cdot D f(\textbf{0}) \]
+
+The value of $D f(\textbf{0})$ is already given to us. We only need to find $D g$. Since the partials of $g$ are clearly continuous we know that the derivative of $g$ will be given by:
+\[ D g(x,y) = \left[ \begin{array}{cc}
+D_1 g_1 & D_2 g_1 \\
+D_1 g_2 & D_2 g_2 \\
+\end{array} \right]  = \left[ \begin{array}{cc}
+1 & 2 \\
+3 y & 3 x \\
+\end{array} \right] \]
+
+\noindent So we get 
+\[ D g(1,2) =  \left[ \begin{array}{cc}
+1 & 2 \\
+6 & 3 \\
+\end{array} \right] \]
+
+\noindent We derive the answer
+\[ D(g \circ f)(\textbf{0})  = D g(f(\textbf{0})) \cdot D f(\textbf{0})  = \left[ \begin{array}{cc}
+1 & 2 \\
+6 & 3 \\
+\end{array} \right] \cdot \left[ \begin{array}{ccc}
+1 & 2 & 3 \\
+0 & 0 & 1\\
+\end{array} \right] = \left[ \begin{array}{ccc}
+1 & 2 & 5 \\
+6 & 12 & 21\\
+\end{array} \right]\] 
+\newpage
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 7 Problem 2\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $f : \mathbb{R}^2 \to \mathbb{R}^3$ and $g : \mathbb{R}^3 \to \mathbb{R}^2$ be given by the equations
+\begin{eqnarray*}
+f(\textbf{x}) &=& (e^{2 x_1 + x_2}, 3 x_2 - \cos \, x_1, x_1^2 + x_2 + 2) \\
+g(\textbf{y}) &=& (3 y_1 + 2 y_2 + y_3^2, y_1^2 - y_3 + 1) \\
+\end{eqnarray*}
 
+\noindent (a) $F(\textbf{x}) = g(f(\textbf{x}))$, find $DF(\textbf{0})$. \\
+
+\noindent First we note that $f(\textbf{0}) = (1,-1,2)$ and by the chain rule we have:
+
+\[ D(g \circ f)(\textbf{0})  =  D g(f(\textbf{0})) \cdot D f(\textbf{0}) =  D g(1,-1,2) \cdot D f(0,0) \]
+
+\noindent To complete the problem we need to calculate the derivatives of the functions individually.
+
+\begin{eqnarray*}
+D f(x_1,x_2) &=& \left[ \begin{array}{cc}
+D_1 f_1 & D_2 f_1\\
+D_1 f_2 & D_2 f_2 \\
+D_1 f_3 & D_2 f_3 \\
+\end{array} \right]  = \left[ \begin{array}{cc}
+2 e^{2 x_1 + x_2} & e^{2 x_1 + x_2} \\
+\sin \, x_1 & 3 \\
+2 x_1 & 1 \\
+\end{array} \right] \\
+D g(y_1,y_2,y_3) &=& \left[ \begin{array}{ccc}
+D_1 g_1 & D_2 g_1 & D_3 g_1\\
+D_1 g_2 & D_2 g_2 & D_3 g_3 \\
+\end{array} \right]  = \left[ \begin{array}{ccc}
+3 & 2 & 2 y_3\\
+2 y_1 & 0 & -1\\
+\end{array} \right]
+\end{eqnarray*}
+
+\noindent So we have
+\[   D g(1,-1,2) \cdot D f(0,0) =   \left[ \begin{array}{ccc}
+3 & 2 & 4\\
+2 & 0 & -1\\
+\end{array} \right] \cdot \left[ \begin{array}{cc}
+2 & 1 \\
+0 & 3 \\
+0 & 1 \\
+\end{array} \right] = \left[ \begin{array}{cc}
+6 & 13 \\
+4 & 1 \\
+\end{array} \right] \] \\
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 7 Problem 3\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $f : \mathbb{R}^3 \to \mathbb{R}$ and $g : \mathbb{R}^2 \to \mathbb{R}$ be differentiable. Let $F : \mathbb{R}^2 \to \mathbb{R}$ by defined by the equation
+\[ F(x,y) = f(x,y,g(x,y)) \] 
 
+\noindent (a) Find $DF$ in terms of the partials of $f$ and $g$\\
+
+\noindent We rewrite $F$ as a composition $F = c \circ e$ where 
+\begin{eqnarray*}
+e(x,y) &=& (x,y,g(x,y)) \\
+c(x,y,z) &=& f(x,y,z) \\
+\end{eqnarray*}
+
+\noindent We can now calculate $D F$ as follows:
+\[ D F(x,y) = D (c \circ e) (x,y) =  D c(e(x,y)) \cdot D e(x,y) \]
+
+\noindent The derivatives are as follows:
+\[ De = \left[ \begin{array}{cc}
+D_1 e_1 & D_2 e_1 \\
+D_1 e_2 & D_2 e_2 \\
+D_1 e_3 & D_2 e_3 \\
+\end{array} \right] =  \left[ \begin{array}{cc}
+1 & 0 \\
+0 & 1 \\
+D_1 g(x,y) & D_2 g(x,y) \\
+\end{array} \right] \]
+
+\noindent and
+\[ Dc = \left[ \begin{array}{ccc}
+D_1 f_1 & D_2 f_1 & D_3 f_1\\
+\end{array} \right] =  \left[ \begin{array}{ccc}
+D_1 f(x,y,g(x,y)) & D_2 f(x,y,g(x,y)) & D_3 f(x,y,g(x,y)) \\
+\end{array} \right] \]
+
+\noindent This gives a value for $DF$
+\begin{eqnarray*}
+D F(x,y) &=& D c(e(x,y)) \cdot D e(x,y)\\ 
+&=& \left[ \begin{array}{ccc}
+D_1 f(x,y,g(x,y)) & D_2 f(x,y,g(x,y)) & D_3 f(x,y,g(x,y)) \\
+\end{array} \right] \cdot \left[ \begin{array}{cc}
+1 & 0 \\
+0 & 1 \\
+D_1 g(x,y) & D_2 g(x,y) \\
+\end{array} \right] \\
+&=&  \left[ \begin{array}{c}
+D_1 f(x,y,g(x,y)) + D_3 f(x,y,g(x,y)) \cdot D_1 g(x,y) \\
+ D_2 f(x,y,g(x,y)) + D_3 f(x,y,g(x,y))\cdot D_2 g(x,y) \\
+\end{array} \right]
+\end{eqnarray*} \\
+
+\noindent (b) If $F(x,y) = 0$ for all (x,y), find $D_1 g$ and $D_2 g$ in terms of the partials of $f$. \\
+
+\noindent If $F(x,y) = 0$ then $D F(x,y) = 0$, from part $a$ we have then that 
+\[ \left[ \begin{array}{c}
+D_1 f(x,y,g(x,y)) + D_3 f(x,y,g(x,y)) \cdot D_1 g(x,y) \\
+D_2 f(x,y,g(x,y)) + D_3 f(x,y,g(x,y))\cdot D_2 g(x,y) \\
+\end{array} \right]  = \left[ \begin{array}{c} 
+0 \\
+0 \\
+\end{array} \right] \]
+
+\noindent This shows that 
+\[
+\begin{array}{c}
+0 = D_1 f(x,y,g(x,y)) + D_3 f(x,y,g(x,y)) \cdot D_1 g(x,y) \\
+0 = D_2 f(x,y,g(x,y)) + D_3 f(x,y,g(x,y)) \cdot D_2 g(x,y) \\
+\end{array}
+\implies \begin{array}{c}
+ D_1 g(x,y) = \frac{-D_1 f(x,y,g(x,y))}{D_3 f(x,y,g(x,y))} \\
+D_2 g(x,y) =  \frac{-D_2 f(x,y,g(x,y))}{D_3 f(x,y,g(x,y))}  \\
+\end{array}
+\]
 
 \end{document}
