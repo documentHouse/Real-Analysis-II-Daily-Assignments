@@ -20,7 +20,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 6}
 \author{Andrew Rickert}
-\date{Started: March 7, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 7, 2012 \\ \hspace{1pt} Ended: March 12,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -86,22 +86,86 @@ Thus the only value where $D \phi(x,y) = 0$ is when $(x,y) = 0$. Since there are
 
 \noindent (b) What is the set $B = f(A)$?\\
 
-Since $f(x,y) = (x^2 - y^2, 2 x y)$ we can let $u = x^2 - y^2$ and $v = 2 x y$. This gives
+\noindent Since $f(x,y) = (x^2 - y^2, 2 x y)$ we can let $u = x^2 - y^2$ and $v = 2 x y$. This gives
 \begin{align*}
 &u^2 = x^4 - 2 x^2 y^2 + y^4, \quad v^2 = 4 x^2 y^2 \\
-&\implies u^2  + \frac{v^2}{2} = x^4 + y^4
-\\\end{align*}
+&\implies u^2  + \frac{v^2}{2} = x^4 + y^4\\
+\end{align*}
 
+If we let a constant $a$ be such that $x^4 + y^4 = a^2$ then we have the ellipse in $(u,v)$ space:
+\[ u^2  + \frac{v^2}{2} = a^2 \]
  
+Since $u(-x,-y) = u(-x,y) = u(x,y)$, $v(-x,-y) = v(x,y)$ and $v(-x,y) = v(x,y)$ it is clear that the restriction of $0 < x$ will not restrict the range of $(u,v)$ in the ellipse. There is one exception. Eventhough we may replace a $(-x,y)$ with a $(x,y)$ to produce the value that would have been absent because we do not allow $x < 0$ there is not replacement for $x = 0$. In the case $x = 0$ it is true that $(u,v) = (-y^2,0)$. This means that all points on the line $(\infty,0] \times 0$ are excluded from $(u,v)$ space. The ellipses are all disjoint and partition $\mathbb{R}^2$ so the mapped set is 
+\[ B = \mathbb{R} - (\infty,0] \times 0 \]
 
-\noindent (b) If $g$ is the inverse function, $D g(0,1)$\\
+\noindent (c) If $g$ is the inverse function, $D g(0,1)$\\
 
+First we note that $f(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}) = (0,1)$ so that $g(0,1) = (\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})$. Because $(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}) \in A$ and $A$ is open we know by the inverse function theorem that the inverse function exists and is differentiable at $(0,1)$. By theorem 7.4 we may calculate the derivative as
+\[ D g(0,1) = D f(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})^{-1} \]
+
+\noindent So we calculate $D f$
+\[ D f(x,y) = \left[ \begin{array}{cc}
+2x & -2y \\
+2y & 2x \\
+\end{array} \right] \implies D f(x,y)^{-1} = \frac{1}{4(x^2 + y^2)} \left[ \begin{array}{cc}
+2x & 2y \\
+-2y & 2x \\
+\end{array} \right] \]
+
+\noindent This gives 
+\[ D g(0,1) = D f(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})^{-1} =  \left[ \begin{array}{cc}
+\frac{1}{2 \sqrt{2}} & \frac{1}{2 \sqrt{2}}  \\
+-\frac{1}{2 \sqrt{2}}  & \frac{1}{2 \sqrt{2}}  \\
+\end{array} \right] \]
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 8 Problem 2\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $f : \mathbb{R}^2 \to \mathbb{R}^2$ be defined by the equation
 
+\[ f(x,y) = (e^x \cos y, e^x \sin y) \]
+
+\noindent (a) Show that $f$ is one-to-one on the set $A$ consisting of all $(x,y)$ with $x > 0$. \\
+
+Using the same argument from part $a$ of the previous problem, we can show that $f$ is one-to-one by contradiction if we show that $D phi \neq 0$ for all $(x,y) \in A$ where 
+\[ \phi(x,y) = \sqrt{ (e^x \cos y)^2 + (e^x \sin y)^2 } = \sqrt{e^{2x}} = e^x \]
+\noindent Calculating $D \phi(x,y)$ gives
+
+\[ D \phi(x,y) = \left[ \begin{array}{cc}
+e^x & 0 \\
+\end{array} \right] \]
+
+Since $e^x \neq 0$ for all $x$ we have shown by the argument from the previous problem that $f$ is one-to-one.\\
+
+\noindent (b) What is the set $B = f(A)$?\\
+
+If we let $u = e^x \cos y$ and $v = e^x \sin y$ then we may derive the relation
+\[ u^2 + v^2 = (e^x \cos y)^2 + (e^x \sin y)^2 = e^{2x} \]
+
+This defines a collection of circles in $(u,v)$ space of radius $e^x$. Because $0 < y < 2 \pi$ we know that the circles will not include that values at $y = 0$. By the definition of $f$ these will be the set $(e^x,0)$ for $x \in \mathbb{R}$ which is $(0,\infty) \times 0$. It is also clear from the equation describing the circles that $(0,0) \notin B$ which gives the result 
+\[ B = \mathbb{R} - [0,\infty) \times 0 \]
+
+\noindent (c) If $g$ is the inverse function, $D g(0,1)$\\
+
+First we note that $f(0,\frac{\pi}{2}) = (0,1)$ so that $g(0,1) = (0,\frac{\pi}{2})$. Because $(0,\frac{\pi}{2}) \in A$ and $A$ is open we know by the inverse function theorem that the inverse function exists and is differentiable at $(0,1)$. By theorem 7.4 we may calculate the derivative as
+\[ D g(0,1) = D f(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})^{-1} \]
+
+
+\noindent So we calculate $D f$
+\[ D f(x,y) = \left[ \begin{array}{cc}
+e^x \cos y & - e^x \sin y \\
+e^x \sin y & e^x \cos y \\
+\end{array} \right] \implies D f(x,y)^{-1} = \frac{1}{e^{2x}} \left[ \begin{array}{cc}
+e^x \cos y & e^x \sin y \\
+-e^x \sin y & e^x \cos y \\
+\end{array} \right] \]
+
+\noindent This gives 
+\[ D g(0,1) = D f(0,\frac{\pi}{2})^{-1} =  \left[ \begin{array}{cc}
+0 & 1 \\
+-1 & 0 \\
+\end{array} \right] \]
 
 \end{document}
