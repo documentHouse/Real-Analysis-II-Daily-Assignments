@@ -37,6 +37,66 @@
 
 \noindent (a) Show that $f$ is one-to-one on the set $A$ consisting of all $(x,y)$ with $x > 0$. \\
 
+Suppose that $f$ is not one to one. There must exist two points $\textbf{a}_0 = (x_0,y_0)$ and $\textbf{a}_1 = (x_1,y_1)$ such that $\textbf{a}_0 \neq \textbf{a}_1$ but $f(\textbf{a}_0) = f(\textbf{a}_1)$. Now define two functions as follows:
+\begin{eqnarray*}
+\phi(x,y) &=& ||f(x,y)||\\
+d(t) &=& \phi(\textbf{a}_0 + t(\textbf{a}_1 - \textbf{a}_0))\\
+\end{eqnarray*}
+
+\noindent We can apply the mean value theorem to $d(t)$ with $0 = d(0) = d(1)$ to get a value $t_0$ such that 
+\[ 0 = d(1) - d(0) = d'(t_0)(1 - 0) = d'(t_0) = D \phi(\textbf{a}_0 + t_0(\textbf{a}_1 - \textbf{a}_0)) \cdot (\textbf{a}_1 - \textbf{a}_0) \]
+Since $\textbf{a}_1 - \textbf{a}_0 \neq \textbf{0}$ by assumption so we have $D \phi(\textbf{a}_0 + t_0(\textbf{a}_1 - \textbf{a}_0)) = 0$. If we can show that $D \phi(x,y)$ is not zero for any $(x,y) \in A$ then we contradict that $f(x,y)$ is \emph{not} one-to-one.
+
+ \begin{eqnarray*} 
+ D \phi(x,y) &=& \left[ \begin{array}{cc} 
+ D_1 \sqrt{(x^2 - y^2)^2 + (2 x y)^2} & D_2 \sqrt{(x^2 - y^2)^2 + (2 x y)^2}\\
+\end{array} \right] \\
+		 &=& \left[ \begin{array}{cc} 
+ \frac{x(x^2 - y^2) + 2 x y^2}{\sqrt{(x^2 - y^2)^2 + (2 x y)^2}} & \frac{-y(x^2 - y^2) + 2 x^2 y}{\sqrt{(x^2 - y^2)^2 + (2 x y)^2}}\\
+\end{array} \right] \\
+\end{eqnarray*}
+
+Since we are trying to find possible $(x,y)$ where $D \phi(x,y) = 0$ we set the above matrix to zero and derive the following equations
+
+\begin{eqnarray*}
+\frac{x(x^2 - y^2) + 2 x y^2}{\sqrt{(x^2 - y^2)^2 + (2 x y)^2}} &=& 0\\
+\frac{-y(x^2 - y^2) + 2 x^2 y}{\sqrt{(x^2 - y^2)^2 + (2 x y)^2}} &=& 0\\
+\end{eqnarray*}
+
+\noindent But since $0 < x$ we know that $\sqrt{(x^2 - y^2)^2 + (2 x y)^2} \neq 0$ so 
+
+\begin{align}
+&\hspace{38pt}x(x^2 - y^2) + 2 x y^2 = 0 \label{eqn:deriv1}\\
+&\hspace{25pt}-y(x^2 - y^2) + 2 x^2 y = 0 \label{eqn:deriv2}\\
+&\implies x^2 (x^2 - y^2) + y^2 (x^2 - y^2 ) = 0 \nonumber \\
+&\implies (x^2 + y^2) (x^2 - y^2) = 0 \nonumber
+\end{align}
+
+Since $0 < x$ we know that $x^2 + y^2 \neq 0$ we have that $x^2 - y^2 = 0$. This implies that $y = \pm x$ but since $0 < x$ it must be the case that $x = y$.\\
+Looking at equations $(\ref{eqn:deriv1})$ and $(\ref{eqn:deriv2})$ again we can also derive
+
+\begin{eqnarray*} 
+x y^3 + x^3 y &=& 0 \\
+y y^3 + y^3 y &=& 2 y^4 = 0 \quad \text{since $x = y$}\\
+\implies y &=& 0\\
+\implies x &=& 0 \quad \text{since $x = y$}
+\end{eqnarray*}
+
+Thus the only value where $D \phi(x,y) = 0$ is when $(x,y) = 0$. Since there are no values in $A$ for which $D \phi(x,y) = 0$ we have the necessary contradiction.\\
+
+\noindent (b) What is the set $B = f(A)$?\\
+
+Since $f(x,y) = (x^2 - y^2, 2 x y)$ we can let $u = x^2 - y^2$ and $v = 2 x y$. This gives
+\begin{align*}
+&u^2 = x^4 - 2 x^2 y^2 + y^4, \quad v^2 = 4 x^2 y^2 \\
+&\implies u^2  + \frac{v^2}{2} = x^4 + y^4
+\\\end{align*}
+
+ 
+
+\noindent (b) If $g$ is the inverse function, $D g(0,1)$\\
+
+
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 8 Problem 2\\
 \rule{500pt}{1pt}\\
