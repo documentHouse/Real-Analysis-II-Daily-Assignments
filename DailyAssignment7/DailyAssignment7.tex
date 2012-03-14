@@ -41,12 +41,96 @@ Since $||\textbf{x}|| < 1 \implies ||\textbf{x}||^{\frac{1}{3}} < 1$ we have
 So for every value $\textbf{x} \in B(0;1)$ we have $\textbf{x}' \in B(0;1)$ and $f(\textbf{x}') = \textbf{x}$ since 
 \[ f(\textbf{x}') = ||\textbf{x}'|| \cdot \textbf{x}' = || \frac{\textbf{x}}{||\textbf{x}||^{\frac{2}{3}}} ||^2 \frac{\textbf{x}}{||\textbf{x}||^{\frac{2}{3}}} =  \frac{||\textbf{x}||^2}{||\textbf{x}||^{\frac{4}{3}}} \frac{\textbf{x}}{||\textbf{x}||^{\frac{2}{3}}} = \textbf{x} \]
 This shows that $f$ is onto.
+To show that $f$ is one-to-one we note that 
+\begin{align*}
+& f(\textbf{x}_1) = f(\textbf{x}_2) \implies ||\textbf{x}_1||^2\cdot \textbf{x}_1 = ||\textbf{x}_2||^2\cdot \textbf{x}_2 \implies ||||\textbf{x}_1||^2\cdot \textbf{x}_1 || = ||||\textbf{x}_2||^2\cdot \textbf{x}_2|| \\
+& \implies  ||\textbf{x}_1||^2\cdot ||\textbf{x}_1|| = ||\textbf{x}_2||^2\cdot ||\textbf{x}_2|| \implies ||\textbf{x}_1||^3 = ||\textbf{x}_2||^3 \implies ||\textbf{x}_1|| = ||\textbf{x}_2||
+\end{align*}
 
+\noindent Now returning to the expression $f(\textbf{x}_1) = f(\textbf{x}_2)$ we have 
+\begin{eqnarray*} 
+f(\textbf{x}_1) = f(\textbf{x}_2) &\implies& ||\textbf{x}||^2\cdot \textbf{x}_1 = ||\textbf{x}||^2\cdot \textbf{x}_2 \implies ||\textbf{x}||^2 (\textbf{x}_1-  \textbf{x}_2) = 0 \\
+&\implies& \textbf{x}_1 -  \textbf{x}_2 = 0 \quad \text{since if $||\textbf{x}||$ = 0 the one-to-one relation is vacuously true}\\
+&\implies& \textbf{x}_1 = \textbf{x}_2
+\end{eqnarray*}
+We have shown that $f(\textbf{x}_1) = f(\textbf{x}_2) \implies \textbf{x}_1 = \textbf{x}_2$ so $f$ is one-to-one.
+
+%Looking over the demonstration that $f$ is onto suggests that the inverse function is
+%\[ g(\textbf{y}) = \frac{\textbf{y}}{||\textbf{y}||^{\frac{2}{3}}} \]
+%This can be verified if one calculates to show that $g(f(\textbf{x})) = \textbf{x}$. Since $f(\textbf{0}) = \textbf{0}$ we need to evaluate $D g(\textbf{0})$.
+
+By theorem 7.4 in Munkres if we can show that $D f(\textbf{0})$ exists but that det$D f(\textbf{0}) = 0$ then $D g$ does not exist i.e. is not differentiable. 
+Letting $\textbf{I}$ be the identity matrix the calculation for $D f$ gives
+\[ D f(\textbf{x}) = ||\textbf{x}||^2 \textbf{I} + 2 \left[ \begin{array}{c}
+x_1 \textbf{x} \\
+x_2 \textbf{x} \\
+\vdots \\
+x_n \textbf{x} \\
+\end{array} \right] \]
+ 
+It is clear from this expression that both $D f(\textbf{0}) = \textbf{0}$ and therefore det $D f(\textbf{0}) = 0$.
+ 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 8 Problem 4\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $g : \mathbb{R}^2 \to \mathbb{R}^2$ be given by the equation
+\[ g(x,y) = (2 y e^{2x}, x e^y) \]
+Let $f : \mathbb{R}^2 \to \mathbb{R}^3$ be given by the equation
+\[ f(x,y) = (3x - y^2,2x + y,xy + y^3) \]
+
+\noindent (a) Show that there is a neighborhood of $(0,1)$ that $g$ carries in a one-to-one fashion onto a neighborhood of $(0,2)$.\\
+
+\noindent To show the existence of the neighborhood of $(0,1)$ for $g$ we only need to apply the inverse function theorem. The component functions of $g$ are products of $C^\infty$ functions so $g$ is $C^\infty$. The last part of the theorem to be verified is that $g$ is non-singular at $(0,1)$.\\
+Calculating $D g$ gives
+\[ D g = \left[ \begin{array}{cc}
+4 y e^{2x} & 2 e^{2x} \\
+e^y & x e^y \\
+\end{array} \right] \]
+\noindent at $(0,1)$ we have
+\[ D g(0,1) = \left[ \begin{array}{cc}
+4 & 2 \\
+e & 0 \\
+\end{array} \right] \]
+since det $D g(0,1) = -2e$ the function $g$ is non-singular at $(0,1)$ and the neighborhood exists.\\
+
+\noindent (b) Find $D(f \circ g^{-1})$ at $(2,0)$.\\
+
+The component functions of $f$ are products, sums and differences of $C^\infty$ functions so $f$ must also be $C^\infty$. By the chain rule and theorem 7.4 of Munkres we can simply the derivative calculation to
+\[D(f \circ g^{-1}) (2,0) = D f (g^{-1} (2,0)) \cdot D g^{-1} (2,0) = D(f(0,1)) \cdot D g^{-1} (2,0) = D(f(0,1)) \cdot [D g (0,1)]^{-1} \]
+
+\noindent To complete the calculation we need to calculate $D f(0,1)$ so
+\[ D f(x,y) = \left[ \begin{array}{cc}
+3 & -2 y \\
+2 & 1 \\
+y & x + 3 y^2 \\
+\end{array} \right]  \implies D f(0,1) = \left[ \begin{array}{cc}
+3 & -2 \\
+2 & 1 \\
+1 & 3 \\
+\end{array} \right] \]
+
+\noindent Using part $a$ we have for $[D g (0,1)]^{-1}$
+\[
+[D g (0,1)]^{-1} = \frac{1}{2 e} \left[ \begin{array}{cc}
+0 & 2 \\
+e & -4 \\
+\end{array} \right] \]
+
+\noindent This gives
+\[ D(f \circ g^{-1}) (2,0) = D(f(0,1)) \cdot [D g (0,1)]^{-1} =   \left[ \begin{array}{cc}
+3 & -2 \\
+2 & 1 \\
+1 & 3 \\
+\end{array} \right] \cdot \frac{1}{2 e} \left[ \begin{array}{cc}
+0 & 2 \\
+e & -4 \\
+\end{array} \right] =  \frac{1}{2 e} \left[ \begin{array}{cc}
+-2e & 14 \\
+e & 0 \\
+3 e & -10 \\
+\end{array} \right] \]
 
 
 \begin{flushleft} 
@@ -54,6 +138,6 @@ This shows that $f$ is onto.
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
-
+Let $A$ be open in $\mathbb{R}^n$; let $f : A \to \mathbb{R}^n$ be of class $C^r$; assume $Df(\textbf{x})$ is non-singular for $\textbf{x} \in A$. Show that even if $f$ is not one-to-one on $A$, the set $B = f(A)$ is open in $\mathbb{R}^n$.
 
 \end{document}
