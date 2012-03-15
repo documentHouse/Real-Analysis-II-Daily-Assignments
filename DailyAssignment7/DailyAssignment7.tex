@@ -138,6 +138,17 @@ e & 0 \\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
-Let $A$ be open in $\mathbb{R}^n$; let $f : A \to \mathbb{R}^n$ be of class $C^r$; assume $Df(\textbf{x})$ is non-singular for $\textbf{x} \in A$. Show that even if $f$ is not one-to-one on $A$, the set $B = f(A)$ is open in $\mathbb{R}^n$.
+Let $A$ be open in $\mathbb{R}^n$; let $f : A \to \mathbb{R}^n$ be of class $C^r$; assume $Df(\textbf{x})$ is non-singular for $\textbf{x} \in A$. Show that even if $f$ is not one-to-one on $A$, the set $B = f(A)$ is open in $\mathbb{R}^n$.\\
+
+There are two places one-to-oneness is used in theorem 8.2 which shows $B$ is open. The first is that there is a single value that such that $\textbf{a} = f^{-1}(\textbf{b})$ for $\textbf{b} \in B$. The second use is to show that $f(\text{Bd}\, Q) \cap \{ \textbf{b} \} = \emptyset$ where $Q$ is the rectangle that surrounds $\textbf{b}$.
+
+For a fixed $\textbf{b} \in B$ let $I = \{ \textbf{x} | f(\textbf{x}) = \textbf{b} \}$. Since $f$ is of class $C^r$ and $D f$ is non-singular for all $\textbf{x} \in A$ the conditions of theorem 8.1 are satisfied. Specifically, for a $\textbf{x} \in I$ there exists an open cube $C(\textbf{x};\epsilon)$ such that $f$ is one-to-one on the cube. We now let $C'(\textbf{x};\frac{\epsilon}{2})$ be the \emph{closed} cube around $\textbf{x}$.
+
+Since $\textbf{y} \in C'(\textbf{x};\frac{\epsilon}{2}) \implies |\textbf{y}-\textbf{x}| \le \frac{\epsilon}{2} < \epsilon$ then $\textbf{y} \in C(\textbf{x};\epsilon)$ so $C'(\textbf{x};\frac{\epsilon}{2}) \subset C(\textbf{x};\epsilon)$ but then we have $ C'(\textbf{x};\frac{\epsilon}{2}) \cap (I - \{ \textbf{x} \}) = \emptyset$. This is so because $C(\textbf{x};\epsilon) \cap (I - \{ \textbf{x} \}) = \emptyset$ by the local one-to-oneness guaranteed in theorem 8.1.
+
+This also implies that $f(\text{Bd} \,C'(\textbf{x};\frac{\epsilon}{2})) \cap \{ \textbf{b} \} = \emptyset$. If this were not the case then there is a \\$\textbf{x'} \in \text{Bd} \,C'(\textbf{x};\frac{\epsilon}{2})$ such that $\textbf{x}' \in I$ since $f(\textbf{x}') = \textbf{b}$. Since $C'(\textbf{x};\frac{\epsilon}{2})$ is closed it follows that \\$\textbf{x'} \in \text{Bd} \,C'(\textbf{x};\frac{\epsilon}{2}) \implies \textbf{x}' \in C'(\textbf{x};\frac{\epsilon}{2})$. Since $\epsilon > 0$ and $\textbf{x} \in  \text{Bd} \,C'(\textbf{x};\frac{\epsilon}{2})$ we know that $\textbf{x}' \neq \textbf{x}$. This means, however, that there are two values $\textbf{x}',\textbf{x} \in C(\textbf{x};\epsilon)$ such that $f(\textbf{x}') = \textbf{b}$ and $f(\textbf{x}) = \textbf{b}$ which contradicts the one-to-oneness on $C(\textbf{x};\epsilon)$.
+
+The previous argument applies to all of the points in $I$ and so we may choose any of the points to carry out the remainder of the proof of theorem 8.2 which shows that $B$ is open.
+
 
 \end{document}
