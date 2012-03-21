@@ -13,17 +13,24 @@
 \usepackage{subfigure}
 \usepackage{caption}
 \pagestyle{plain}
-%\renewcommand{\topfraction}{0.3}
-%\renewcommand{\bottomfraction}{0.8}
-%\renewcommand{\textfraction}{0.07}
+
+\def\uint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern9mu}\mkern-20mu}%
+    {\mkern9mu\overline{\vphantom{\intop}\mkern9mu}\mkern-14mu}%
+    {\mkern9mu\overline{\vphantom{\intop}\mkern9mu}\mkern-14mu}%
+    {\mkern9mu\overline{\vphantom{\intop}\mkern9mu}\mkern-14mu}%
+  \int}
+\def\lint{\mkern3mu\underline{\vphantom{\intop}\mkern9mu}\mkern-10mu\int}
+
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 8}
 \author{Andrew Rickert}
-\date{Started: March ??, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 21, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
+
 
 % Page 1
 \begin{flushleft} 
@@ -31,17 +38,66 @@
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+Let $f,g : Q \to \mathbb{R}$ be bounded functions such that $f(\textbf{x}) \le g(\textbf{x})$ for $\textbf{x} \in Q$. \\
+Show that $\lint_Q f \le \lint_Q g$ and $\uint_Q f \le \uint_Q g$.\\
+
+We will prove the first part $\lint_Q f \le \lint_Q g$ since the proof of the second part is analogous.\\
+We start by quickly showing that $f(\textbf{x}) \le g(\textbf{x}) \implies \text{inf} \{ f(\textbf{x}) \} \le  \text{inf} \{ g(\textbf{x}) \}$.
+
+Let $F = \text{inf} \{ f(\textbf{x}) \}$ and $G = \text{inf} \{ g(\textbf{x}) \}$. Since $F$ is a lower bound we have $F \le f(\textbf{x}) \le g(\textbf{x})$ for all $\textbf{x}$ in the domain so $F$ is a lower bound for $\{ g(\textbf{x}) \}$. Because $G$ is the \emph{greatest} lower bound for $\{ g(\textbf{x}) \}$ we know that for any other bound $B$ of $\{ g(\textbf{x}) \}$ we have the relation $B \le G$. Since $F$ is such a lower bound we have $F \le G$ or \[ \text{inf} \{ f(\textbf{x}) \} \le  \text{inf} \{ g(\textbf{x}) \} \]
+
+This allows us to say that $m_R(f) = \text{inf} \{ f(\textbf{x} | \textbf{x} \in R)\} \le \text{inf} \{ g(\textbf{x} | \textbf{x} \in R)\} = m_R(g)$.
+
+Now we show that for any partition $P$ it is the case that $f(\textbf{x}) \le g(\textbf{x}) \implies L(f,P) \le L(g,P)$. The following calculation shows this 
+
+\[
+L(f,P) = \sum_R m_R(f) \cdot \nu (R) \le \sum_R m_R(g) \cdot \nu(R)= L(g,R)
+\]
+
+We can now prove the result. Because $\lint_Q f \equiv \text{sup} \: L(f,P)$ for any given $\epsilon$ there must be a partition $P$ such that 
+\[ \lint_Q f - \epsilon < L(f,P) \]
+
+\noindent We then have from the above comments
+\begin{eqnarray*} 
+L(f,P) &\le& \hspace{-10pt} L(g,P) \le \lint_Q g \quad \text{since the lower integral is sup $L(g,P)$} \\
+	 &\implies& \lint_Q f - \epsilon < \lint_Q g \implies \lint_Q f < \lint_Q g  + \epsilon \\
+	 &\implies& \lint_Q f \le \lint_Q g
+\end{eqnarray*}
+\newpage
+
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 10 Problem 3\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+Let $[0,1]^2 = [0,1] \times [0,1]$. Let $f : [0,1]^2 \to \mathbb{R}$ be defined by setting $f(x,y) = 0$ if $y \neq x$, and $f(x,y) = 1$ if $y = x$. Show that $f$ is integrable over $[0,1]^2$.\\
+
+\noindent By the Riemann condition, for every $\epsilon$ we need to find a $P$ such that 
+\[ U(f,P) - L(f,P) < \epsilon \]
+
+First we note that for every rectangle $R$ that contains a point $(y,y)$ it is true that $\text{inf} \{ f(\textbf{x}) | \textbf{x} \in R\} = 0$. This is to say that every rectangle contains that contains a point $(y,y)$ contains a point $(x,y)$ such that $x \neq y$. This is clear from the definition of the rectangle $R = [x_i,x_{i+1}] \times  [y_i,y_{i+1}]$ which contains the points $(x_i,y_i),(x_{i+1},y_i),(x_i,y_{i+1}),(x_{i+1},y_{i+1})$ which cannot all be of the form $(y,y)$. \\
+Because clearly $\text{inf} \{ f(\textbf{x}) | \textbf{x} \in R\} = 0$ for all $R$ which do not contain a point $(y,y)$ ($f(\textbf{x}) = 0$ on the whole rectangle) we know that $L(f,P) = 0$ for every partition.
+
+This reduces the task down to proving that for every $\epsilon$ there exists a $P$ such that $U(f,P) < \epsilon$. 
+
+\noindent For every $\epsilon$ there exists an $N$ such that $\frac{3}{N} < \epsilon$. Now let the partition be 
+\[ P = \{ [0,\frac{1}{N},\frac{2}{N},\cdots,\frac{N-1}{N},1] , [0,\frac{1}{N},\frac{2}{N},\cdots,\frac{N-1}{N},1] \} \]
+
+There will be $N$ rectangles along the diagonal that contain the points of the form $(y,y)$ and 2 diagonals next to the main diagonals (with $N-1$ points each) which have a corner of the form $(y,y)$. The remainder of the rectangles do not contain a point of the form $(y,y)$ so they will not contribute to the sum in $U(f,P)$.
+
+\noindent Calculating $U(f,P)$ gives
+\begin{eqnarray*} 
+U(f,P) =   \sum_R M_R(f) \cdot \nu (R) &=& N(\frac{1}{N^2}) \cdot 1 + 2(N-1)\frac{1}{N^2} \cdot 1\\
+&<& N(\frac{1}{N^2}) + 2(N)\frac{1}{N^2}  = \frac{3}{N} < \epsilon \\
+\end{eqnarray*}
+This completes the proof.
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 10 Problem 4\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
+
 
 
 \begin{flushleft} 
