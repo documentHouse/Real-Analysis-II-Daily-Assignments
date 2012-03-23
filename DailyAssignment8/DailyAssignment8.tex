@@ -26,7 +26,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 8}
 \author{Andrew Rickert}
-\date{Started: March 21, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 21, 2012 \\ \hspace{1pt} Ended: March 23,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -161,8 +161,23 @@ U(g,P) &=& \sum_R M_R( \{ g(R) \}) \nu(R) = d' \sum f(x_i) \\
 &=& d' \sum M = d' N M \le \frac{\epsilon}{MN} MN = \epsilon \\
 \end{eqnarray*}
 
-This shows that the upper sum of a function which has a finite number of non zero points can be made arbitrarily small.
+This shows that the upper sum of a function which has a finite number of non zero points that can be made arbitrarily small.
 
-Next we show that the given function $f$ can be bounded by a $g + \epsilon$ where $g$ is a finite function and $\epsilon$ is a positive quantity.
+Next we show that the given function $f$ can be bounded by a $g + \frac{\epsilon}{2}$ where $g$ is a finite function and $\epsilon$ is a positive quantity.
+	Let $\frac{\epsilon}{2} > 0$ and we ask how many points of $f$ are greater than this value. If we let $q$ be the largest integer such that $\frac{\epsilon}{2} < \frac{1}{q}$ then there are at most $q-1$ values for $p$ such that $f(\frac{p}{q}) = \frac{1}{q}$ since $0 \le \frac{p}{q} \le 1$. Similarly for $\frac{\epsilon}{2} < \frac{1}{q-1}$ there must be $q-2$ points such that $f(\frac{p}{q-1}) = \frac{1}{q-1}$. Continuing in this way there will be a total of $(q-1) + (q-2) + \cdots + 2 + 1 = \frac{q(q+1)}{2} - q$ points $f(x) > \frac{\epsilon}{2}$. This this number is finite we have shown that there are a finite number of points $\{ x_1,x_2,\cdots, x_n \}$ such that $f(x_i) > \frac{\epsilon}{2}$.
+
+Let $g$ be a function such that $g(x) = 1$ for $x \in \{ x_1,x_2,\cdots,x_n \}$ and $g(x) = 0$ otherwise. It is clear then that $f(x) < g(x) + \frac{\epsilon}{2}$ for all $x \in [0,1]$. By construction $f(x) < \frac{\epsilon}{2} = \frac{\epsilon}{2} + 0 =  \frac{\epsilon}{2} + g(x)$ for $x \notin \{ x_1,x_2,\cdots, x_n \}$ and $f(x) = g(x) < g(x) + \frac{\epsilon}{2}$ for $x \in \{ x_1,x_2,\cdots, x_n \}$. So it is the case that
+\[ f(x) < g(x) + \frac{\epsilon}{2} \quad \text{for $x \in [0,1]$} \]
+Since $U(c,P) = c \cdot \nu (P)$ when $c$ is a constant we have $U(\epsilon,P) = \epsilon \cdot \nu(P) = \epsilon \cdot 1 = \epsilon$ since the partition is of the interval $[0,1]$. By the result about finite functions we may pick a partition of $g$ such that
+\[ U(g,P) < \frac{\epsilon}{2} \]
+
+We may now calculate as follows
+\begin{eqnarray*}
+U(f,P) < U(g,P) &=& \sum_R M(R) \nu(R) \\ 
+&=& \sum_R \sup ( \{ g(x) \} + \frac{\epsilon}{2} ) \nu(R) = \sum_R ((\sup \{ g(x)\})  + \frac{\epsilon}{2} ) \nu(R) \\ 
+&=& \sum_R \sup ( \{ g(x) \} \nu(R) + \sum_R \frac{\epsilon}{2} \:\nu(R) =  \sum_R \sup ( \{ g(x) \} \nu(R) + \frac{\epsilon}{2} \\ 
+&=& U(g,P) + \frac{\epsilon}{2} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \\
+\end{eqnarray*}
+
 
 \end{document}
