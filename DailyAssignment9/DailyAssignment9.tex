@@ -1,0 +1,93 @@
+%\documentclass[11pt,reqno]{amsart}
+\documentclass[11pt,reqno]{article}
+\usepackage[margin=.8in, paperwidth=8.5in, paperheight=11in]{geometry}
+%\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent7
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{caption}
+\pagestyle{plain}
+
+\def\uint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern9mu}\mkern-20mu}%
+    {\mkern9mu\overline{\vphantom{\intop}\mkern9mu}\mkern-14mu}%
+    {\mkern9mu\overline{\vphantom{\intop}\mkern9mu}\mkern-14mu}%
+    {\mkern9mu\overline{\vphantom{\intop}\mkern9mu}\mkern-14mu}%
+  \int}
+\def\lint{\mkern3mu\underline{\vphantom{\intop}\mkern9mu}\mkern-10mu\int}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 9}
+\author{Andrew Rickert}
+\date{Started: March ??, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+
+% Page 1
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 12 Problem 1\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+\noindent Carry out Step 2 of the proof of Theorem 12.2.\\
+
+The proof is the same as that for the lower integral mutatis mutandis.
+
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 12 Problem 2\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+LEt $I = [0,1]$; let $Q = I \times I$. Define $f : Q \to \mathbb{R}$ by letting $f(x,y) = \frac{1}{q}$ if $y$ is rational and $x = \frac{p}{q}$, where $p$ and $q$ are positive integers with no common factor; let $f(x,y) = 0$ otherwise.\\
+
+\noindent (a) Show that $\int_Q f$ exists.\\
+
+$f(x,y)$ vanishes are everywhere except at rational $x$ and $y$. This means the only discontinuities may occur at the rational points of $[0,1]$. For $x$ there are a countable number $y$ such that $f(x,y) \neq 0$. Since there a countable number of $x$ there is at most a countable set of countable sets of discontinuities. A countable collection of countable sets is countable so we may apply theorem 11.2 that says if $f$ is discontinuous only on a set of measure zero then it is integrable. We have shown the number of possible discontinuities is at most countable so the theorem applies.\\
+
+\noindent (b) Compute
+\[ \lint_{y \in I} f(x,y) \quad \text{and} \quad \uint_{y \in I} f(x,y)\]
+
+For the lower integral we note that whether $x_0$ is rational or not there will be irrational values in subinteval of $x_0 \times [0,1]$. This means that for all $x$ we have $L(f,P) = 0$ for any partition so we get 
+\[ \lint_{y \in I} f(x,y)  = 0 \]
+
+For the upper integral we need to distinguish whether $x$ is rational or not. If we suppose that it is irrational then $f(x,y) = 0$ for all $(x,y) \in \{x\} \times [0,1]$. It is clear in this case that 
+\[  \uint_{y \in I} f(x,y)  = 0 \quad \text{for irrational $x$} \]
+If we fix $x = \frac{p}{q}$ then $f(x,y) = \frac{1}{q}$ for rational $y$. Since the rationals are dense for every subinterval of $[0,1]$ we find for every partition $P$ we get $U(f,P) = \frac{1}{q}$. This implies
+\[  \uint_{y \in I} f(x,y)  = \frac{1}{q} \quad \text{for rational $x$} \]
+
+\noindent (c) Verify Fubini's theorem.\\
+
+\noindent The lower integral $\lint_{y \in Q} f = 0$ for all $x$ so it is clear that 
+\[ \int_{x \in Q} \lint_{y \in Q} f(x,y) = 0 \]
+
+We define a function $I(x)$ to be the value of the upper integral for each fixed $x$. With this definition we have for $x \in [0,1]$, $I(x) = \frac{1}{q}$ for rational $x = \frac{p}{q}$ and $I(x) = 0$ otherwise. By theorem 11.3 a if $f$ vanishes except on a set of measure zero, then $\int I = 0$. The set of rationals in $[0,1]$ is of measure zero so we have 
+\[ \int_{x \in Q} \uint_{y \in Q} f(x,y) =  \int I(x) = 0 \]
+
+\noindent So we have 
+\[  \int_{x \in Q} \lint_{y \in Q} f(x,y) = \int_{x \in Q} \uint_{y \in Q} f(x,y) = 0 \]
+Fubini's theorem is verified.\\
+
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 12 Problem 3\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+
+
+\begin{flushleft} 
+\textbf{Class 18.101} - Section 12 Problem 4\\
+\rule{500pt}{1pt}\\
+\end{flushleft} 
+
+
+
+\end{document}
