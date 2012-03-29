@@ -82,11 +82,52 @@ Fubini's theorem is verified.\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+Let $Q = A \times B$, where $A$ is a rectangle in $\mathbb{R}^k$ and $B$ is a rectangle in $\mathbb{R}^n$. Let $f : Q \to \mathbb{R}$ be a bounded function.\\
+
+\noindent (a) Let $g$ be a function such that
+\[ \lint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) \le g(\textbf{x}) \le \uint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) \]
+for all $\textbf{x} \in A$. Show that if $f$ is integrable over $Q$, then $g$ is integrable over $A$, and $\int_Q f = \int_A g$.\\
+
+By Fubini's theorem which, also says the functions $\underline{I}(\textbf{x}) = \lint_{\textbf{y} \in B} f(\textbf{x},\textbf{y})$ and $\overline{I}(\textbf{x}) = \uint_{\textbf{y} \in B} f(\textbf{x},\textbf{y})$ are integrable, we have the following
+\begin{eqnarray*}
+\int_Q f = \int_{\textbf{x} \in A} \lint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) &=&  \lint_{\textbf{x} \in A} \lint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) \le \lint_{\textbf{x} \in A} g(\textbf{x}) \\
+\lint_{\textbf{x} \in A} g(\textbf{x}) &\le& \uint_{\textbf{x} \in A} g(\textbf{x}) \\
+\uint_{\textbf{x} \in A} g(\textbf{x}) = \uint_{\textbf{x} \in A} \uint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) &=& \int_{\textbf{x} \in A} \uint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) = \int_Q f 
+\end{eqnarray*}
+%\[ \hspace{-50pt} \int_Q f = \int_{\textbf{x} \in A} \lint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) =  \lint_{\textbf{x} \in A} \lint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) \le \lint_{\textbf{x} \in A} g(\textbf{x}) \le  \uint_{\textbf{x} \in A} g(\textbf{x}) = \uint_{\textbf{x} \in A} \uint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) = \int_{\textbf{x} \in A} \uint_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) = \int_Q f  \]
+Using these three expressions we derive
+\[ \int_Q f \le  \lint_{\textbf{x} \in A} g(\textbf{x}) \le \uint_{\textbf{x} \in A} g(\textbf{x}) \le \int_Q f\]
+
+This shows that the upper and lower integrals of $g$ are the same which shows that $g$ is integrable.  The common value of the upper and lower integrals of $g$ which this value of the integral must equal the bounds in the above expression so we have 
+\[  \int_Q f = \int_{\textbf{x} \in A} g(\textbf{x}) \]
+ 
+\noindent (b) Give an example where $\int_Q f$ exists and one of the iterated integrals
+\[  \int_{\textbf{x} \in A} \int_{\textbf{y} \in B} f(\textbf{x},\textbf{y}) \quad \text{and} \quad  \int_{\textbf{y} \in B} \int_{\textbf{x} \in A} f(\textbf{x},\textbf{y})  \]
+exist, but the other does not.\\
+ 
+Let $f : [0,1]^2 \to [0,1]$ so that if $x = \frac{1}{2}$ then $f(x,y) = 1$ if $y$ is irrational and $f(x,y) = 0$ if $y$ is rational. We define $f$ to vanish everywhere else.
+
+Because the rectangle $[\frac{1}{2},\frac{1}{2} + \epsilon] \times [0,1]$ has volume $\epsilon$ and covers the only nonzero portion of the function we've shown that the set of discontinuities of $f$ has measure 0. This means by theorem 11.2 that $\int_Q f$ exists where $Q =  [0,1]^2$.
+For each $y$ the following integration exists since for each fixed $y$ there is only one non-zero point of $f$:
+\[ \int_{x \in [0,1]} f(x,y) = 0\]
+The remaining function $I(y) =  \int_{x \in [0,1]} f(x,y) = 0$ for all $y \in [0,1]$ is clearly integrable so 
+\[ \int_{y \in [0,1]} \int_{x \in [0,1]} f(x,y)  \]
+exists.
+The other integral does not exist since the following integral does not exist
+\[ \int_{y \in [0,1]} f(\frac{1}{2},y)  \]
+
+\noindent (c) Find an example where both the iterated integrals of (b) exist, but the integral $\int_Q f$ does not.
 
 \begin{flushleft} 
 \textbf{Class 18.101} - Section 12 Problem 4\\
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
+\noindent Let $A$ be open in $\mathbb{R}^2$; let $f : A \to \mathbb{R}$ be of class $C^2$. Let $Q$ be a rectangle contained in $A$.
+
+\noindent (a) Use Fubini's theorem and the fundamental theorem of calculus to show that
+\[ \int_Q D_2 D_1 f = \int_Q D_1 D_2 f \]
+
+\noindent (b) Give a proof, independent of the one given in section 6, that $D_2 D_1 f(\textbf{x}) = D_1 D_2 f(\textbf{x})$ for each $\textbf{x} \in A$.
 
 \end{document}
