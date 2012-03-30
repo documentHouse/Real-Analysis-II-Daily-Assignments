@@ -26,7 +26,7 @@
 
 \title{Real Analysis $\mathbb{II}$: \\ Daily Assignment 9}
 \author{Andrew Rickert}
-\date{Started: March ??, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
+\date{Started: March 29, 2012 \\ \hspace{1pt} Ended: March ??,  2012}                                           % Activate to display a given date or no date
 
 \begin{document}
 \maketitle
@@ -38,7 +38,6 @@
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
-<<<<<<< HEAD
 \noindent Carry out Step 2 of the proof of Theorem 12.2.\\
 
 The proof is the same as that for the lower integral mutatis mutandis.
@@ -48,7 +47,7 @@ The proof is the same as that for the lower integral mutatis mutandis.
 \rule{500pt}{1pt}\\
 \end{flushleft} 
 
-LEt $I = [0,1]$; let $Q = I \times I$. Define $f : Q \to \mathbb{R}$ by letting $f(x,y) = \frac{1}{q}$ if $y$ is rational and $x = \frac{p}{q}$, where $p$ and $q$ are positive integers with no common factor; let $f(x,y) = 0$ otherwise.\\
+Let $I = [0,1]$; let $Q = I \times I$. Define $f : Q \to \mathbb{R}$ by letting $f(x,y) = \frac{1}{q}$ if $y$ is rational and $x = \frac{p}{q}$, where $p$ and $q$ are positive integers with no common factor; let $f(x,y) = 0$ otherwise.\\
 
 \noindent (a) Show that $\int_Q f$ exists.\\
 
@@ -128,6 +127,41 @@ The other integral does not exist since the following integral does not exist
 \noindent (a) Use Fubini's theorem and the fundamental theorem of calculus to show that
 \[ \int_Q D_2 D_1 f = \int_Q D_1 D_2 f \]
 
-\noindent (b) Give a proof, independent of the one given in section 6, that $D_2 D_1 f(\textbf{x}) = D_1 D_2 f(\textbf{x})$ for each $\textbf{x} \in A$.
+We know that $D_2 D_1 f$ is continuous since $C^2$ so we may rewrite this as 
+\[ D_2 g \quad \text{where} \; g = D_1 f \]
+So $g$ must be continuous since again $f$ is $C^2$.
+Let $Q = [x_0,x_1] \times [y_0,y_1]$ so by Fubini's we may write 
+\[ \int_Q D_2 g = \int_{x \in [x_0,x_1]} \int_{y \in [y_0,y_1]} D_2 g \]
+Note the integral $ \int_{y \in [y_0,y_1]} $ is not the upper or lower integral because $D_2 D_1 f$ is continuous.\\
+Since $g$ is continuous we may apply the fundamental theorem of calculus to get
+\begin{eqnarray*} 
+\int_{x \in [x_0,x_1]} \int_{y \in [y_0,y_1]} D_2 g(x,y) &=&  \int_{x \in [x_0,x_1]} g(x,y_1) - g(x,y_0) \\
+&=& \int_{x \in [x_0,x_1]} D_1 f(x,y_1) - D_1 f(x,y_0)\\
+&=& \int_{x \in [x_0,x_1]} D_1(f(x,y_1) - f(x,y_0)) \\
+\end{eqnarray*}
+
+Since $D_1(f(x,y_1) - f(x,y_0))$ is continuous we may use the fundamental theorem of calculus again to get
+
+\begin{eqnarray*}  
+\int_{x \in [x_0,x_1]} D_1(f(x,y_1) - f(x,y_0)) &=& (f(x_1,y_1) - f(x_1,y_0)) - (f(x_0,y_1) - f(x_0,y_0))
+\end{eqnarray*}
+
+Fubini's theorem applies to both orders of integration, the proof is the same, so may perform a similar calculation with $D_1 D_2 f$. Let $g = D_2 f$ so we derive.
+ 
+\begin{eqnarray*}
+\int_Q D_1 g &=& \int_{y \in [y_0,y_1]} \int_{x \in [x_0,x_1]} D_1 g(x,y) \\
+&=&  \int_{y \in [y_0,y_1]} g(x_1,y) - g(x_0,y) \\
+&=&  \int_{y \in [y_0,y_1]} D_2 f(x_1,y) - D_2 f(x_0,y) \\
+&=&  \int_{y \in [y_0,y_1]} D_2 (f(x_1,y) - f(x_0,y)) \\
+&=& (f(x_1,y_1)-f(x_0,y_1)) - (f(x_1,y_0) - f(x_0,y_0))
+\end{eqnarray*}
+
+\noindent So we have 
+\[ \int_Q D_2 D_1 f = (f(x_1,y_1) - f(x_1,y_0)) - (f(x_0,y_1) - f(x_0,y_0)) = \int_Q D_1 D_2 f \]
+
+\noindent (b) Give a proof, independent of the one given in section 6, that $D_2 D_1 f(\textbf{x}) = D_1 D_2 f(\textbf{x})$ for each $\textbf{x} \in A$.\\
+
+Suppose for some $\textbf{x'} \in A$ it is the case that $D_1 D_2 f(\textbf{x'}) \neq D_2 D_1 f(\textbf{x'})$. If $\epsilon = |D_1 D_2 f(\textbf{x'}) - D_1 D_2 f(\textbf{x'})|$ then because $D_1 D_2 f(\textbf{x}')$ is continuous we know that there exists a cube $C(\textbf{x}')$ around $\textbf{x}'$ such that 
+\[ |D_1 D_2 f(\textbf{x'}) - D_1 D_2 f(\textbf{x})| <  \epsilon \quad \text{for} \; \textbf{x} \in C(\textbf{x}')\]
 
 \end{document}
