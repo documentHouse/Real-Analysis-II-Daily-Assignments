@@ -157,11 +157,36 @@ Fubini's theorem applies to both orders of integration, the proof is the same, s
 \end{eqnarray*}
 
 \noindent So we have 
-\[ \int_Q D_2 D_1 f = (f(x_1,y_1) - f(x_1,y_0)) - (f(x_0,y_1) - f(x_0,y_0)) = \int_Q D_1 D_2 f \]
+\[ \int_Q D_2 D_1 f = f(x_1,y_1) - f(x_1,y_0) - f(x_0,y_1) + f(x_0,y_0) = \int_Q D_1 D_2 f \]
 
 \noindent (b) Give a proof, independent of the one given in section 6, that $D_2 D_1 f(\textbf{x}) = D_1 D_2 f(\textbf{x})$ for each $\textbf{x} \in A$.\\
 
-Suppose for some $\textbf{x'} \in A$ it is the case that $D_1 D_2 f(\textbf{x'}) \neq D_2 D_1 f(\textbf{x'})$. If $\epsilon = |D_1 D_2 f(\textbf{x'}) - D_1 D_2 f(\textbf{x'})|$ then because $D_1 D_2 f(\textbf{x}')$ is continuous we know that there exists a cube $C(\textbf{x}')$ around $\textbf{x}'$ such that 
-\[ |D_1 D_2 f(\textbf{x'}) - D_1 D_2 f(\textbf{x})| <  \epsilon \quad \text{for} \; \textbf{x} \in C(\textbf{x}')\]
+Suppose for some $\textbf{x}' \in A$ it is the case that $D_1 D_2 f(\textbf{x'}) \neq D_2 D_1 f(\textbf{x'})$. First we define\\
+$\epsilon = |D_2 D_1 f(\textbf{x}') - D_1 D_2 f(\textbf{x}')|$ and let $D_2 D_1 f(\textbf{x}') > D_1 D_2 f(\textbf{x}')$. The proof is similar for the case opposite inequality.
+
+Because both $D_2 D_1 f(\textbf{x})$ and $D_1 D_2 f(\textbf{x})$ are continuous there are cubes $C_1(\textbf{x}')$ and $C_2(\textbf{x}')$ around $\textbf{}$ such that 
+\begin{eqnarray*}
+|D_2 D_1 f(\textbf{x}) - D_2 D_1 f(\textbf{x}') | &<& \frac{\epsilon}{3}  \quad \text{for $\textbf{x} \in C_1(\textbf{x}')$}\\
+|D_1 D_2 f(\textbf{x}) - D_1 D_2 f(\textbf{x}') | &<& \frac{\epsilon}{3}  \quad \text{for $\textbf{x} \in C_2(\textbf{x}')$}\\
+\end{eqnarray*}
+Both inequalities are true if we only consider the cube $C(\textbf{x}') = C_1(\textbf{x}') \cap C_2(\textbf{x}')$. From the above expressions we then have 
+
+\begin{eqnarray*}
+ -\frac{\epsilon}{3} &<& D_2 D_1 f(\textbf{x}) - D_2 D_1 f(\textbf{x}')\\
+ -\frac{\epsilon}{3} &<& D_1 D_2 f(\textbf{x}') - D_1 D_2 f(\textbf{x})\\
+\end{eqnarray*}
+We may now calculate as follows
+\begin{eqnarray*}
+D_2 D_1 f(\textbf{x}) - D_1 D_2 f(\textbf{x}) &=& D_2 D_1 f(\textbf{x})  - D_2 D_1 f(\textbf{x}') + D_2 D_1 f(\textbf{x}') - D_1 D_2 f(\textbf{x}') + D_1 D_2 f(\textbf{x}') - D_1 D_2 f(\textbf{x}) \\   
+&>& -\frac{\epsilon}{3} + \epsilon - \frac{\epsilon}{3} = \frac{\epsilon}{3} \\
+\end{eqnarray*}
+So we have $D_2 D_1 f(\textbf{x}) - D_1 D_2 f(\textbf{x}) > \frac{\epsilon}{3}$ for all $\textbf{x} \in C(\textbf{x}')$. It is trivial to show that $\int_Q (g + c) = \int g + c \nu(Q)$ where $c$ is a constant and $\nu(Q)$ represents the volume of $Q$ so, we use this fact below.
+\begin{eqnarray*}
+\int_{C(\textbf{x})} D_1 D_2 f &<& \int_{C(\textbf{x}')} (D_2 D_1 f - \frac{\epsilon}{3}) \\
+&=& \int_{C(\textbf{x}')} D_2 D_1 f - \frac{\epsilon}{3} \nu(C(\textbf{x}')) \\
+&<& \int_{C(\textbf{x}')} D_2 D_1 f \quad \text{since $\epsilon, \nu(C(\textbf{x}')) > 0$ and $\epsilon$ is fixed}\\
+\end{eqnarray*}
+
+We may make the cube $C(\textbf{x}')$ smaller if $C(\textbf{x}') \not\subset A$. The inequalities above will still hold and therefore so will the result. Thus we have contradicted the established result that $\int_Q D_2 D_1 f = \int_Q D_1 D_2 f$ which completes the proof.
 
 \end{document}
